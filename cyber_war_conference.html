@@ -1,0 +1,1900 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Guerra de las Máquinas: IA, Hackeo y Geopolítica Digital</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1a2e 50%, #16213e 100%);
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #0f3460 0%, #16213e 100%);
+            border-bottom: 3px solid #e94560;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="20" fill="%23ffffff" opacity="0.03">01010101</text></svg>');
+            animation: scroll 20s linear infinite;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(100px); }
+        }
+
+        h1 {
+            font-size: 2.8em;
+            color: #00d9ff;
+            text-shadow: 0 0 20px rgba(0, 217, 255, 0.5);
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            color: #e94560;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .author {
+            color: #00d9ff;
+            font-size: 1.1em;
+            margin-top: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        nav {
+            background: #0f3460;
+            padding: 15px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        nav a {
+            color: #00d9ff;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: all 0.3s;
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #e94560;
+            color: #fff;
+            border-color: #00d9ff;
+            transform: translateY(-2px);
+        }
+
+        section {
+            background: rgba(15, 52, 96, 0.6);
+            margin: 30px 0;
+            padding: 40px;
+            border-radius: 10px;
+            border-left: 4px solid #e94560;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+        }
+
+        h2 {
+            color: #00d9ff;
+            font-size: 2.2em;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #e94560;
+            padding-bottom: 10px;
+            text-shadow: 0 0 10px rgba(0, 217, 255, 0.3);
+        }
+
+        h3 {
+            color: #e94560;
+            font-size: 1.6em;
+            margin: 25px 0 15px;
+        }
+
+        h4 {
+            color: #00d9ff;
+            font-size: 1.3em;
+            margin: 20px 0 10px;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, #e94560 0%, #ff6b9d 100%);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 5px solid #00d9ff;
+        }
+
+        .quote {
+            font-style: italic;
+            border-left: 4px solid #00d9ff;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #b0b0b0;
+            font-size: 1.1em;
+        }
+
+        .video-container {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border: 2px solid #00d9ff;
+        }
+
+        .video-link {
+            display: block;
+            color: #00d9ff;
+            text-decoration: none;
+            padding: 15px;
+            background: rgba(0, 217, 255, 0.1);
+            border-radius: 5px;
+            margin: 10px 0;
+            transition: all 0.3s;
+            border: 1px solid #00d9ff;
+        }
+
+        .video-link:hover {
+            background: rgba(0, 217, 255, 0.2);
+            transform: translateX(10px);
+            box-shadow: 0 0 15px rgba(0, 217, 255, 0.3);
+        }
+
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .resource-card {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #00d9ff;
+            transition: all 0.3s;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 217, 255, 0.2);
+            border-color: #e94560;
+        }
+
+        .case-study {
+            background: linear-gradient(135deg, rgba(233, 69, 96, 0.2) 0%, rgba(0, 217, 255, 0.1) 100%);
+            padding: 25px;
+            border-radius: 8px;
+            margin: 25px 0;
+            border: 2px solid #e94560;
+        }
+
+        .definition {
+            background: rgba(0, 217, 255, 0.05);
+            padding: 20px;
+            border-left: 4px solid #00d9ff;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .reference {
+            font-size: 0.9em;
+            color: #888;
+            margin-top: 10px;
+            padding-left: 20px;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 10px 0;
+        }
+
+        a {
+            color: #00d9ff;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #e94560;
+        }
+
+        .warning {
+            background: rgba(233, 69, 96, 0.2);
+            border: 2px solid #e94560;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .stat-box {
+            flex: 1;
+            min-width: 200px;
+            background: rgba(0, 217, 255, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            border: 2px solid #00d9ff;
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            color: #e94560;
+            font-weight: bold;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #e94560 0%, #ff6b9d 100%);
+            color: #fff;
+            padding: 15px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            margin: 10px 5px;
+            transition: all 0.3s;
+            border: 2px solid #00d9ff;
+            font-weight: bold;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(233, 69, 96, 0.6);
+            color: #fff;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            background: #0a0e27;
+            margin-top: 50px;
+            border-top: 3px solid #e94560;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            section {
+                padding: 20px;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .timeline-item {
+            padding: 20px;
+            background: rgba(0, 217, 255, 0.05);
+            border-left: 3px solid #e94560;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .impact-box {
+            background: linear-gradient(135deg, rgba(233, 69, 96, 0.3) 0%, rgba(255, 107, 157, 0.2) 100%);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 2px solid #e94560;
+        }
+
+        /* Estilos para el juego de evaluación */
+        .game-container {
+            background: linear-gradient(135deg, #0a0e27 0%, #16213e 100%);
+            border: 3px solid #e94560;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+
+        .game-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .game-score {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .score-item {
+            background: rgba(0, 217, 255, 0.1);
+            padding: 15px 25px;
+            border-radius: 10px;
+            border: 2px solid #00d9ff;
+            text-align: center;
+            min-width: 150px;
+            margin: 10px;
+        }
+
+        .score-number {
+            font-size: 2em;
+            color: #e94560;
+            font-weight: bold;
+        }
+
+        .question-card {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 25px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 5px solid #00d9ff;
+            display: none;
+        }
+
+        .question-card.active {
+            display: block;
+            animation: slideIn 0.5s ease-in-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .question-text {
+            font-size: 1.3em;
+            color: #00d9ff;
+            margin-bottom: 20px;
+        }
+
+        .options-grid {
+            display: grid;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .option-btn {
+            background: rgba(0, 217, 255, 0.1);
+            border: 2px solid #00d9ff;
+            color: #e0e0e0;
+            padding: 15px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: left;
+            font-size: 1em;
+        }
+
+        .option-btn:hover {
+            background: rgba(0, 217, 255, 0.2);
+            transform: translateX(10px);
+            border-color: #e94560;
+        }
+
+        .option-btn.correct {
+            background: rgba(0, 255, 0, 0.2);
+            border-color: #00ff00;
+        }
+
+        .option-btn.incorrect {
+            background: rgba(255, 0, 0, 0.2);
+            border-color: #ff0000;
+        }
+
+        .option-btn:disabled {
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .feedback {
+            background: rgba(233, 69, 96, 0.2);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border-left: 4px solid #e94560;
+            display: none;
+        }
+
+        .feedback.show {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .game-btn {
+            background: linear-gradient(135deg, #e94560 0%, #ff6b9d 100%);
+            color: #fff;
+            border: 2px solid #00d9ff;
+            padding: 12px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: bold;
+            transition: all 0.3s;
+            margin: 10px;
+        }
+
+        .game-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(233, 69, 96, 0.6);
+        }
+
+        .game-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .result-container {
+            display: none;
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.1) 0%, rgba(233, 69, 96, 0.1) 100%);
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+
+        .result-container.show {
+            display: block;
+            animation: zoomIn 0.5s ease-in-out;
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .rank-title {
+            font-size: 2.5em;
+            color: #e94560;
+            margin: 20px 0;
+            text-shadow: 0 0 20px rgba(233, 69, 96, 0.5);
+        }
+
+        .rank-description {
+            font-size: 1.2em;
+            color: #00d9ff;
+            margin: 15px 0;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 5px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #00d9ff 0%, #e94560 100%);
+            transition: width 0.5s ease-in-out;
+        }
+
+        .scenario-box {
+            background: rgba(233, 69, 96, 0.1);
+            border: 2px solid #e94560;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <header id="inicio">
+        <h1>⚔️ LA GUERRA DE LAS MÁQUINAS ⚔️</h1>
+        <div class="subtitle">Inteligencia Artificial, Hackeo y Geopolítica Digital</div>
+        <div class="author">Johan Tapia PhD</div>
+        <p style="color: #b0b0b0; margin-top: 10px; position: relative; z-index: 1;">Conferencia Universitaria | Universidad de Colombia | 2025</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#introduccion">Introducción</a></li>
+            <li><a href="#definiciones">Definiciones</a></li>
+            <li><a href="#imperios">Imperios Digitales</a></li>
+            <li><a href="#ia">Inteligencia Artificial</a></li>
+            <li><a href="#casos">Casos Reales</a></li>
+            <li><a href="#recursos">Recursos</a></li>
+            <li><a href="#videos">Videos</a></li>
+            <li><a href="#evaluacion">🎮 Evaluación</a></li>
+            <li><a href="#bibliografia">Bibliografía</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- INTRODUCCIÓN -->
+        <section id="introduccion">
+            <h2>🔥 Introducción: Bienvenidos a la Guerra Invisible</h2>
+            
+            <div class="highlight">
+                <h3>En este momento exacto:</h3>
+                <div class="stats">
+                    <div class="stat-box">
+                        <div class="stat-number">2,200+</div>
+                        <div>Ciberataques activos</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">43</div>
+                        <div>Gobiernos siendo infiltrados</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">$6T</div>
+                        <div>Costo global del cibercrimen (2024)</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quote">
+                "La próxima guerra mundial no empezará con un misil. Empezará con un clic."
+            </div>
+
+            <p>Vivimos en una era donde la guerra ya no requiere soldados, tanques ni bombas. La verdadera batalla se libra en servidores, cables submarinos y líneas de código. Este recurso te proporcionará una comprensión profunda de cómo la inteligencia artificial, el hackeo y la geopolítica están redefiniendo el poder global.</p>
+
+            <div class="warning">
+                <h4>⚠️ Contexto Crucial</h4>
+                <p>No estamos hablando de ciencia ficción. Cada caso, concepto y amenaza presentada aquí es real y está ocurriendo ahora mismo. Tu universidad, tu país y tu futuro profesional están directamente afectados por esta guerra invisible.</p>
+            </div>
+        </section>
+
+        <!-- DEFINICIONES CLAVE -->
+        <section id="definiciones">
+            <h2>📚 Definiciones y Conceptos Fundamentales</h2>
+
+            <div class="definition">
+                <h4>Ciberseguridad</h4>
+                <p>La ciberseguridad se define como "la práctica de proteger sistemas, redes y programas de ataques digitales que tienen como objetivo acceder, cambiar o destruir información confidencial, extorsionar dinero a los usuarios o interrumpir procesos comerciales normales".</p>
+                <p class="reference">Cybersecurity and Infrastructure Security Agency. (2023). <em>Cybersecurity fundamentals</em>. U.S. Department of Homeland Security.</p>
+            </div>
+
+            <div class="definition">
+                <h4>Inteligencia Artificial en Ciberseguridad</h4>
+                <p>La inteligencia artificial puede ser utilizada tanto para "aumentar las capacidades defensivas mediante la detección automatizada de amenazas, como para amplificar las capacidades ofensivas mediante la automatización de ataques y la generación de contenido malicioso".</p>
+                <p class="reference">Brundage, M., Avin, S., Clark, J., Toner, H., Eckersley, P., Garfinkel, B., Dafoe, A., Scharre, P., Zeitzoff, T., Filar, B., Anderson, H., Roff, H., Allen, G. C., Steinhardt, J., Flynn, C., Ó hÉigeartaigh, S., Beard, S., Belfield, H., Farquhar, S., ... Amodei, D. (2018). <em>The malicious use of artificial intelligence: Forecasting, prevention, and mitigation</em>. Future of Humanity Institute.</p>
+            </div>
+
+            <div class="definition">
+                <h4>Advanced Persistent Threat (APT)</h4>
+                <p>Las APT son "operaciones de ciberespionaje prolongadas y dirigidas, generalmente patrocinadas por estados-nación, que buscan mantener acceso no autorizado a redes objetivo durante períodos extendidos".</p>
+                <p class="reference">Mandiant. (2022). <em>M-Trends 2022: A view from the front lines</em>. Mandiant Intelligence.</p>
+            </div>
+
+            <div class="definition">
+                <h4>Deepfake</h4>
+                <p>Videos, audio o imágenes sintéticas hiperreales creadas mediante técnicas de aprendizaje profundo que representan a personas diciendo o haciendo cosas que nunca dijeron o hicieron.</p>
+                <p class="reference">Chesney, R., & Citron, D. K. (2019). Deep fakes: A looming challenge for privacy, democracy, and national security. <em>California Law Review, 107</em>(6), 1753-1820. https://doi.org/10.15779/Z38RV0D15J</p>
+            </div>
+
+            <div class="definition">
+                <h4>Phishing</h4>
+                <p>Técnica de ingeniería social donde los atacantes se hacen pasar por entidades confiables para engañar a las víctimas y obtener información confidencial como credenciales o datos financieros.</p>
+                <p class="reference">Anti-Phishing Working Group. (2023). <em>Phishing activity trends report</em> (4th Quarter 2023). APWG.</p>
+            </div>
+
+            <div class="definition">
+                <h4>Ransomware</h4>
+                <p>Malware que encripta archivos o sistemas de la víctima y exige un pago (generalmente en criptomonedas) para restaurar el acceso.</p>
+                <p class="reference">Europol. (2023). <em>Internet organised crime threat assessment (IOCTA) 2023</em>. European Union Agency for Law Enforcement Cooperation.</p>
+            </div>
+
+            <div class="definition">
+                <h4>Supply Chain Attack (Ataque a la Cadena de Suministro)</h4>
+                <p>Ataque donde los adversarios comprometen organizaciones menos seguras en la cadena de suministro para acceder finalmente a objetivos de mayor valor.</p>
+                <p class="reference">National Institute of Standards and Technology. (2022). <em>Cybersecurity supply chain risk management practices for systems and organizations</em> (NIST SP 800-161 Rev. 1). U.S. Department of Commerce.</p>
+            </div>
+
+            <div class="definition">
+                <h4>Zero Trust Architecture</h4>
+                <p>Paradigma de ciberseguridad centrado en la protección de recursos donde la confianza nunca se otorga implícitamente, sino que debe ser continuamente evaluada.</p>
+                <p class="reference">Rose, S., Borchert, O., Mitchell, S., & Connelly, S. (2020). <em>Zero trust architecture</em> (NIST SP 800-207). National Institute of Standards and Technology. https://doi.org/10.6028/NIST.SP.800-207</p>
+            </div>
+
+            <div class="definition">
+                <h4>Bug Bounty</h4>
+                <p>Programa mediante el cual organizaciones ofrecen reconocimiento y compensación a investigadores de seguridad que reportan vulnerabilidades de manera responsable, creando un ecosistema colaborativo de seguridad.</p>
+                <p class="reference">HackerOne. (2023). <em>The 2023 hacker-powered security report</em>. HackerOne Inc.</p>
+            </div>
+        </section>
+
+        <!-- LOS TRES IMPERIOS -->
+        <section id="imperios">
+            <h2>🌍 Los Tres Imperios Digitales</h2>
+
+            <div class="case-study">
+                <h3>🇺🇸 Estados Unidos: El Imperio de los Datos</h3>
+                
+                <h4>Operación PRISM</h4>
+                <p>Programa de vigilancia masiva revelado por Edward Snowden en 2013, que demostró que la NSA (Agencia de Seguridad Nacional) tenía acceso directo a los servidores de las principales empresas tecnológicas estadounidenses.</p>
+                
+                <div class="impact-box">
+                    <h4>Datos Clave:</h4>
+                    <ul>
+                        <li><strong>Empresas involucradas:</strong> Microsoft, Google, Facebook, Apple, Yahoo, YouTube, Skype, AOL, Paltalk</li>
+                        <li><strong>Alcance:</strong> Acceso a correos, chats, videos, fotos, datos almacenados, transferencias de archivos</li>
+                        <li><strong>Legalidad:</strong> Autorizado bajo la Sección 702 de FISA (Foreign Intelligence Surveillance Act)</li>
+                        <li><strong>Cobertura:</strong> Monitoreo de comunicaciones de ciudadanos no estadounidenses sin orden judicial</li>
+                    </ul>
+                </div>
+
+                <p class="reference">Greenwald, G., & MacAskill, E. (2013, June 6). NSA Prism program taps into user data of Apple, Google and others. <em>The Guardian</em>. https://www.theguardian.com/world/2013/jun/06/us-tech-giants-nsa-data</p>
+
+                <h4>Five Eyes Alliance</h4>
+                <p>Alianza de inteligencia entre Estados Unidos, Reino Unido, Canadá, Australia y Nueva Zelanda para compartir información de vigilancia masiva.</p>
+                <p class="reference">Leigh, I., & Zwitter, A. (2019). <em>Five Eyes intelligence oversight and review</em>. Global Campus Human Rights Journal, 3, 87-110.</p>
+
+                <h4>Estrategia de Semiconductores</h4>
+                <p>En 2022, Estados Unidos implementó restricciones sin precedentes a la exportación de tecnología de semiconductores avanzados a China, controlando efectivamente quién puede fabricar chips de última generación.</p>
+                <p class="reference">White House. (2022). <em>Executive order on ensuring robust tailored restrictions on certain semiconductors</em>. The White House.</p>
+            </div>
+
+            <div class="case-study">
+                <h3>🇨🇳 China: El Dragón Digital</h3>
+                
+                <h4>Operation Cloud Hopper (APT10)</h4>
+                <p>Una de las campañas de ciberespionaje más sofisticadas de la historia, atribuida al grupo APT10 (vinculado al Ministerio de Seguridad del Estado de China), que comprometió proveedores de servicios de IT para acceder indirectamente a cientos de organizaciones globales.</p>
+
+                <div class="impact-box">
+                    <h4>Impacto de Cloud Hopper:</h4>
+                    <ul>
+                        <li><strong>Duración:</strong> 2014-2018 (al menos)</li>
+                        <li><strong>Víctimas:</strong> Más de 45 empresas tecnológicas en 12 países</li>
+                        <li><strong>Sectores afectados:</strong> Aeroespacial, telecomunicaciones, farmacéutica, energía, manufactura</li>
+                        <li><strong>Datos robados:</strong> Propiedad intelectual, información de clientes, secretos comerciales</li>
+                        <li><strong>Técnica:</strong> Supply chain attack - comprometer proveedores de servicios de IT para acceder a sus clientes</li>
+                    </ul>
+                </div>
+
+                <p class="reference">PwC & BAE Systems. (2017). <em>Operation Cloud Hopper: Exposing a systematic hacking operation with an unprecedented web of global victims perpetrated by an advanced threat actor</em>. PricewaterhouseCoopers.</p>
+
+                <h4>El Gran Firewall y Control Digital</h4>
+                <p>Sistema de censura y vigilancia más avanzado del mundo, que combina filtrado de DNS, inspección profunda de paquetes e inteligencia artificial para controlar el flujo de información.</p>
+                <p class="reference">King, G., Pan, J., & Roberts, M. E. (2017). How the Chinese government fabricates social media posts for strategic distraction, not engaged argument. <em>American Political Science Review, 111</em>(3), 484-501. https://doi.org/10.1017/S0003055417000144</p>
+
+                <h4>Social Credit System</h4>
+                <p>Sistema de vigilancia masiva que utiliza reconocimiento facial, análisis de comportamiento e IA para asignar puntuaciones de confiabilidad a ciudadanos y empresas.</p>
+                <p class="reference">Liang, F., Das, V., Kostyuk, N., & Hussain, M. M. (2018). Constructing a data-driven society: China's social credit system as a state surveillance infrastructure. <em>Policy & Internet, 10</em>(4), 415-453. https://doi.org/10.1002/poi3.183</p>
+            </div>
+
+            <div class="case-study">
+                <h3>🇷🇺 Rusia: El Maestro del Caos</h3>
+                
+                <h4>NotPetya: El Ciberataque Más Destructivo</h4>
+                <p>En junio de 2017, Rusia lanzó NotPetya, disfrazado como ransomware pero diseñado como un "wiper" (destructor de datos) contra Ucrania. El daño colateral fue catastrófico.</p>
+
+                <div class="impact-box">
+                    <h4>Devastación de NotPetya:</h4>
+                    <ul>
+                        <li><strong>Costo global:</strong> Más de $10 mil millones en daños</li>
+                        <li><strong>Maersk:</strong> Reinstalar 4,000 servidores, 45,000 PCs | Pérdidas: $300 millones</li>
+                        <li><strong>Merck:</strong> Producción farmacéutica interrumpida | Pérdidas: $870 millones</li>
+                        <li><strong>FedEx (TNT):</strong> Pérdidas: $400 millones</li>
+                        <li><strong>Mondelēz:</strong> 1,700 servidores destruidos, 24,000 laptops inutilizadas</li>
+                        <li><strong>Hospitales:</strong> Sistemas críticos caídos, cirugías canceladas</li>
+                    </ul>
+                </div>
+
+                <p class="reference">Greenberg, A. (2019). <em>Sandworm: A new era of cyberwar and the hunt for the Kremlin's most dangerous hackers</em>. Doubleday.</p>
+
+                <h4>APT28 (Fancy Bear) y APT29 (Cozy Bear)</h4>
+                <p>Grupos de ciberespionaje de élite vinculados al GRU (inteligencia militar rusa) y FSB respectivamente, responsables de interferencia electoral y ciberataques estratégicos.</p>
+                <p class="reference">Mueller, R. S. (2019). <em>Report on the investigation into Russian interference in the 2016 presidential election</em>. U.S. Department of Justice.</p>
+            </div>
+
+            <div class="case-study">
+                <h3>🌎 América Latina: El Campo de Batalla Olvidado</h3>
+                
+                <h4>Costa Rica: Bajo Ataque Total</h4>
+                <p>En abril de 2022, el grupo de ransomware Conti (vinculado a Rusia) paralizó por completo el gobierno de Costa Rica, comprometiendo 27 instituciones gubernamentales simultáneamente.</p>
+
+                <div class="impact-box">
+                    <ul>
+                        <li><strong>Duración del ataque:</strong> Más de 2 meses de interrupción</li>
+                        <li><strong>Rescate exigido:</strong> $20 millones en Bitcoin</li>
+                        <li><strong>Impacto:</strong> Sistema tributario, aduanas, salud pública, educación paralizados</li>
+                        <li><strong>Declaración:</strong> Primer país en declarar emergencia nacional por ciberataque</li>
+                    </ul>
+                </div>
+
+                <p class="reference">Organización de los Estados Americanos. (2022). <em>Alerta sobre ciberataques en Costa Rica</em>. OEA Ciberseguridad.</p>
+
+                <h4>Pegasus en América Latina</h4>
+                <p>El spyware Pegasus (desarrollado por NSO Group de Israel) fue utilizado por gobiernos de México, Panamá y otros países latinoamericanos para espiar a periodistas, activistas y políticos de oposición.</p>
+                <p class="reference">Citizen Lab. (2021). <em>Pegasus: The new global weapon for silencing journalists</em>. Munk School of Global Affairs & Public Policy, University of Toronto.</p>
+
+                <h4>República Dominicana: Vulnerabilidades Críticas</h4>
+                <p>Investigación del Dr. Johan Tapia documenta brechas significativas en infraestructura crítica, dependencia tecnológica de potencias extranjeras y falta de políticas integrales de ciberseguridad.</p>
+                <p class="reference">Tapia Bueno, J. (2024). Cybersecurity and geopolitics in the Dominican Republic: Threats, policies, and future prospects. <em>DJfM Journal</em>. https://www.djfm-journal.com/download/cybersecurity-and-geopolitics-in-the-dominican-republic-threats-policies-and-future-prospects-13421.pdf</p>
+            </div>
+        </section>
+
+        <!-- INTELIGENCIA ARTIFICIAL -->
+        <section id="ia">
+            <h2>🤖 Inteligencia Artificial: Arma y Escudo</h2>
+
+            <div class="highlight">
+                <h3>La Paradoja de la IA en Ciberseguridad</h3>
+                <p>La misma tecnología que puede protegernos puede ser usada para atacarnos con una efectividad sin precedentes.</p>
+            </div>
+
+            <h3>🗡️ IA Como Arma Ofensiva</h3>
+
+            <div class="case-study">
+                <h4>1. Generación Automática de Malware</h4>
+                <p>Modelos de lenguaje como GPT pueden ser utilizados para generar código malicioso sofisticado, personalizado y polimórfico (que cambia constantemente para evadir detección).</p>
+                
+                <div class="impact-box">
+                    <strong>BlackMamba (2023):</strong> Demostración de malware que utiliza IA para generar payloads únicos en tiempo real, evadiendo firmas de antivirus tradicionales.
+                    <p class="reference">Hadziosmanovic, D., et al. (2023). BlackMamba: AI-powered keylogger using LLMs for evasion. <em>arXiv preprint</em> arXiv:2302.04822.</p>
+                </div>
+            </div>
+
+            <div class="case-study">
+                <h4>2. Deepfakes: Suplantación Perfecta</h4>
+                <p>Tecnología que permite crear videos, audios e imágenes falsas hiperreales de personas diciendo o haciendo cosas que nunca ocurrieron.</p>
+
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <strong>Marzo 2022:</strong> Video deepfake de Zelensky rindiendo Ucrania circula durante la guerra.
+                    </div>
+                    <div class="timeline-item">
+                        <strong>Febrero 2019:</strong> CEO de empresa de energía UK estafado de $243,000 mediante clonación de voz del CEO alemán.
+                    </div>
+                    <div class="timeline-item">
+                        <strong>2023:</strong> Aumento del 900% en estafas de clonación de voz reportadas por FBI.
+                    </div>
+                </div>
+
+                <p class="reference">Westerlund, M. (2019). The emergence of deepfake technology: A review. <em>Technology Innovation Management Review, 9</em>(11), 39-52. https://doi.org/10.22215/timreview/1282</p>
+            </div>
+
+            <div class="case-study">
+                <h4>3. Phishing Aumentado</h4>
+                <p>ChatGPT y otros LLMs pueden generar correos de phishing perfectamente redactados, personalizados y en múltiples idiomas, incrementando dramáticamente las tasas de éxito.</p>
+
+                <div class="impact-box">
+                    <strong>Investigación de IBM (2023):</strong> Correos de phishing generados por IA tienen una tasa de apertura 3 veces mayor que el phishing tradicional.
+                    <p class="reference">IBM Security. (2023). <em>Cost of a data breach report 2023</em>. IBM Corporation.</p>
+                </div>
+            </div>
+
+            <div class="case-study">
+                <h4>4. Reconocimiento Automatizado a Escala</h4>
+                <p>IA puede escanear millones de sistemas simultáneamente, identificar vulnerabilidades y priorizar objetivos sin intervención humana.</p>
+                
+                <p class="reference">Apruzzese, G., Colajanni, M., Ferretti, L., Guido, A., & Marchetti, M. (2018). On the effectiveness of machine and deep learning for cyber security. In <em>2018 10th International Conference on Cyber Conflict</em> (pp. 371-390). IEEE.</p>
+            </div>
+
+            <h3>🛡️ IA Como Escudo Defensivo</h3>
+
+            <div class="case-study">
+                <h4>1. Detección de Anomalías en Tiempo Real</h4>
+                <p>Sistemas basados en machine learning que aprenden el comportamiento normal de una red y detectan desviaciones sospechosas en milisegundos.</p>
+
+                <div class="resource-card">
+                    <strong>Darktrace:</strong> Utiliza "Enterprise Immune System" basado en IA para detectar amenazas zero-day (desconocidas).
+                    <p class="reference">Darktrace. (2023). <em>The Antigena: AI-powered autonomous response</em>. Darktrace Limited.</p>
+                </div>
+            </div>
+
+            <div class="case-study">
+                <h4>2. Análisis Predictivo de Amenazas</h4>
+                <p>IA que procesa millones de indicadores de compromiso (IoCs) globales para predecir y prevenir ataques antes de que ocurran.</p>
+
+                <p class="reference">CrowdStrike. (2023). <em>Global threat report 2023</em>. CrowdStrike Inc.</p>
+            </div>
+
+            <div class="case-study">
+                <h4>3. Respuesta Automática</h4>
+                <p>Sistemas que pueden aislar amenazas, aplicar parches y contener incidentes sin intervención humana, reduciendo el tiempo de respuesta de horas a segundos.</p>
+
+                <p class="reference">Gartner. (2023). <em>Market guide for extended detection and response (XDR)</em>. Gartner Inc.</p>
+            </div>
+
+            <div class="warning">
+                <h3>⚖️ El Dilema Ético</h3>
+                <h4>Preguntas sin respuesta clara:</h4>
+                <ul>
+                    <li>¿Debería una IA poder bloquear automáticamente el acceso de un usuario sospechoso sin supervisión humana?</li>
+                    <li>¿Es aceptable usar IA para vigilancia masiva si reduce significativamente el crimen?</li>
+                    <li>¿Quién es responsable cuando una IA defensiva causa daños colaterales?</li>
+                    <li>¿Deberíamos regular el desarrollo de IA ofensiva antes de que sea tarde?</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- CASOS IMPACTANTES -->
+        <section id="casos">
+            <h2>💥 Casos Reales que Cambiaron el Mundo</h2>
+
+            <div class="case-study">
+                <h3>SolarWinds: El Hack Más Sofisticado de la Historia</h3>
+                
+                <h4>¿Qué pasó?</h4>
+                <p>Entre marzo y junio de 2020, hackers rusos (identificados como APT29/Cozy Bear, vinculados al SVR) comprometieron SolarWinds, una empresa de software que proporciona herramientas de gestión de IT a más de 300,000 organizaciones.</p>
+
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <strong>Marzo 2020:</strong> Hackers insertan código malicioso ("SUNBURST") en actualizaciones legítimas de SolarWinds Orion.
+                    </div>
+                    <div class="timeline-item">
+                        <strong>Junio 2020:</strong> 18,000 organizaciones descargan e instalan el malware voluntariamente como "actualización de seguridad".
+                    </div>
+                    <div class="timeline-item">
+                        <strong>Diciembre 2020:</strong> FireEye descubre que fue hackeada y rastrea el ataque hasta SolarWinds.
+                    </div>
+                    <div class="timeline-item">
+                        <strong>Impacto total:</strong> 9 agencias federales de EE.UU. y más de 100 empresas privadas comprometidas.
+                    </div>
+                </div>
+
+                <div class="impact-box">
+                    <h4>Víctimas Confirmadas:</h4>
+                    <ul>
+                        <li><strong>Gobierno de EE.UU.:</strong> Departamento de Estado, Pentágono, Departamento del Tesoro, Homeland Security, Energía (incluyendo administración de armas nucleares)</li>
+                        <li><strong>Empresas tecnológicas:</strong> Microsoft, Intel, Cisco, VMware</li>
+                        <li><strong>Consultoras:</strong> Deloitte, KPMG</li>
+                        <li><strong>Acceso mantenido:</strong> Meses sin ser detectados con acceso privilegiado total</li>
+                    </ul>
+                </div>
+
+                <h4>La Técnica: Supply Chain Attack</h4>
+                <p>En lugar de hackear directamente objetivos de alto valor (casi imposible), los atacantes comprometieron un proveedor confiable. Cuando las víctimas instalaron actualizaciones legítimas, también instalaron el malware.</p>
+
+                <div class="quote">
+                    "Este no fue un hackeo. Fue la entrega de una llave maestra disfrazada de cerradura nueva." - Analista de ciberseguridad
+                </div>
+
+                <p class="reference">Cybersecurity and Infrastructure Security Agency. (2021). <em>Analysis report: SolarWinds Orion compromise</em>. CISA.</p>
+                <p class="reference">FireEye. (2020). <em>Highly evasive attacker leverages SolarWinds supply chain to compromise multiple global victims with SUNBURST backdoor</em>. Mandiant.</p>
+            </div>
+
+            <div class="case-study">
+                <h3>WannaCry: Cuando Windows XP Casi Mata Gente</h3>
+
+                <h4>La Tormenta Global</h4>
+                <p>El 12 de mayo de 2017, el ransomware WannaCry se propagó por 150 países en cuestión de horas, explotando una vulnerabilidad de Windows llamada "EternalBlue".</p>
+
+                <div class="impact-box">
+                    <h4>Devastación en Números:</h4>
+                    <ul>
+                        <li><strong>230,000+ computadoras</strong> infectadas en 4 días</li>
+                        <li><strong>150 países</strong> afectados simultáneamente</li>
+                        <li><strong>NHS (UK):</strong> 80 hospitales, 595 centros de salud paralizados</li>
+                        <li><strong>Cirugías canceladas:</strong> Más de 19,000 citas médicas</li>
+                        <li><strong>Costo estimado:</strong> $4 mil millones globalmente</li>
+                    </ul>
+                </div>
+
+                <h4>La Ironía Trágica</h4>
+                <ol>
+                    <li><strong>NSA descubre EternalBlue:</strong> La Agencia de Seguridad Nacional de EE.UU. descubre la vulnerabilidad pero la guarda como arma cibernética secreta.</li>
+                    <li><strong>Shadow Brokers roban el exploit:</strong> Grupo de hackers roba herramientas de la NSA y las publica en internet.</li>
+                    <li><strong>Microsoft lanza parche:</strong> Corrige la vulnerabilidad en marzo 2017 (MS17-010).</li>
+                    <li><strong>Organizaciones no actualizan:</strong> Muchas siguen usando Windows XP sin soporte.</li>
+                    <li><strong>Mayo 2017:</strong> Criminales usan EternalBlue para WannaCry. Caos global.</li>
+                </ol>
+
+                <div class="warning">
+                    <strong>Lección brutal:</strong> Las "armas cibernéticas" gubernamentales eventualmente se filtran y afectan a todos, incluyendo la población civil.
+                </div>
+
+                <p class="reference">Europol. (2017). <em>The WannaCry ransomware attack: Lessons learned</em>. European Cybercrime Centre - EC3.</p>
+            </div>
+
+            <div class="case-study">
+                <h3>Pegasus: Tu Teléfono como Espía</h3>
+
+                <h4>El Spyware Más Sofisticado</h4>
+                <p>Pegasus, desarrollado por NSO Group (Israel), es capaz de infectar iPhones y Android mediante exploits "zero-click" (sin que la víctima haga clic en nada).</p>
+
+                <div class="impact-box">
+                    <h4>Capacidades de Pegasus:</h4>
+                    <ul>
+                        <li>Activar cámara y micrófono remotamente</li>
+                        <li>Leer todos los mensajes (WhatsApp, Signal, Telegram)</li>
+                        <li>Acceder a correos y llamadas</li>
+                        <li>Rastrear ubicación GPS en tiempo real</li>
+                        <li>Robar contraseñas y datos biométricos</li>
+                        <li>Todo sin dejar rastro visible</li>
+                    </ul>
+                </div>
+
+                <h4>Víctimas de Alto Perfil</h4>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <strong>Jamal Khashoggi:</strong> Periodista del Washington Post asesinado. Su teléfono y el de su esposa fueron infectados antes del asesinato.
+                    </div>
+                    <div class="timeline-item">
+                        <strong>México:</strong> Al menos 25 periodistas y activistas infectados, incluyendo Carmen Aristegui.
+                    </div>
+                    <div class="timeline-item">
+                        <strong>Cataluña:</strong> 65 políticos independentistas españoles espiados.
+                    </div>
+                    <div class="timeline-item">
+                        <strong>Colombia, Panamá, El Salvador:</strong> Uso documentado contra periodistas y políticos de oposición.
+                    </div>
+                </div>
+
+                <p class="reference">Citizen Lab. (2021). <em>Forensic methodology report: How to catch NSO Group's Pegasus</em>. Munk School of Global Affairs & Public Policy, University of Toronto.</p>
+                <p class="reference">Amnesty International. (2021). <em>The Pegasus Project: How journalists and activists are surveilled with technology</em>. Amnesty International.</p>
+            </div>
+
+            <div class="case-study">
+                <h3>Target: Cuando el HVAC Destruye tu Navidad</h3>
+
+                <h4>El Hack que Empezó con el Aire Acondicionado</h4>
+                <p>En 2013, hackers robaron datos de tarjetas de crédito de 40 millones de clientes de Target, una de las cadenas minoristas más grandes de EE.UU.</p>
+
+                <h4>¿Cómo entraron?</h4>
+                <p>A través de un pequeño contratista de HVAC (calefacción, ventilación y aire acondicionado) llamado Fazio Mechanical Services que tenía acceso remoto a la red de Target para monitorear sistemas en las tiendas.</p>
+
+                <div class="impact-box">
+                    <ul>
+                        <li><strong>Punto de entrada:</strong> Credenciales robadas de contratista de $1.6M empresa</li>
+                        <li><strong>Datos robados:</strong> 40 millones de tarjetas de crédito/débito</li>
+                        <li><strong>Información personal:</strong> 70 millones de clientes</li>
+                        <li><strong>Costo para Target:</strong> $162 millones en acuerdos legales</li>
+                        <li><strong>CEO:</strong> Renunció por el incidente</li>
+                    </ul>
+                </div>
+
+                <div class="quote">
+                    "La cadena de seguridad es tan fuerte como su eslabón más débil. Target tenía fortalezas, pero su contratista de aire acondicionado no."
+                </div>
+
+                <p class="reference">Krebs, B. (2014). <em>Target hackers broke in via HVAC company</em>. Krebs on Security.</p>
+            </div>
+        </section>
+
+        <!-- RECURSOS Y HERRAMIENTAS -->
+        <section id="recursos">
+            <h2>🛠️ Recursos para Empezar Hoy</h2>
+
+            <h3>🎮 Plataformas de Práctica (Aprende Hackeando)</h3>
+
+            <div class="resource-grid">
+                <div class="resource-card">
+                    <h4>TryHackMe</h4>
+                    <p><strong>Nivel:</strong> Principiante a Avanzado</p>
+                    <p><strong>Estilo:</strong> Gamificado, con paths guiados</p>
+                    <p><strong>Costo:</strong> Freemium (mucho contenido gratis)</p>
+                    <p><strong>Ideal para:</strong> Comenzar desde cero</p>
+                    <a href="https://tryhackme.com" target="_blank" class="cta-button">Visitar TryHackMe</a>
+                    <p class="reference">TryHackMe. (2023). <em>Learn cybersecurity through hands-on exercises</em>. https://tryhackme.com</p>
+                </div>
+
+                <div class="resource-card">
+                    <h4>HackTheBox</h4>
+                    <p><strong>Nivel:</strong> Intermedio a Avanzado</p>
+                    <p><strong>Estilo:</strong> Máquinas virtuales reales para penetrar</p>
+                    <p><strong>Costo:</strong> Freemium</p>
+                    <p><strong>Ideal para:</strong> Pentesting real</p>
+                    <a href="https://www.hackthebox.com" target="_blank" class="cta-button">Visitar HackTheBox</a>
+                </div>
+
+                <div class="resource-card">
+                    <h4>OverTheWire</h4>
+                    <p><strong>Nivel:</strong> Principiante</p>
+                    <p><strong>Estilo:</strong> Wargames progresivos</p>
+                    <p><strong>Costo:</strong> 100% Gratis</p>
+                    <p><strong>Ideal para:</strong> Fundamentos de Linux y hacking</p>
+                    <a href="https://overthewire.org" target="_blank" class="cta-button">Visitar OverTheWire</a>
+                </div>
+
+                <div class="resource-card">
+                    <h4>PentesterLab</h4>
+                    <p><strong>Nivel:</strong> Todos los niveles</p>
+                    <p><strong>Estilo:</strong> Ejercicios específicos de web hacking</p>
+                    <p><strong>Costo:</strong> Freemium</p>
+                    <p><strong>Ideal para:</strong> Seguridad de aplicaciones web</p>
+                    <a href="https://pentesterlab.com" target="_blank" class="cta-button">Visitar PentesterLab</a>
+                </div>
+            </div>
+
+            <h3>🎓 Certificaciones Accesibles</h3>
+
+            <div class="resource-grid">
+                <div class="resource-card">
+                    <h4>Google Cybersecurity Certificate</h4>
+                    <p><strong>Plataforma:</strong> Coursera</p>
+                    <p><strong>Duración:</strong> 6 meses (10 hrs/semana)</p>
+                    <p><strong>Costo:</strong> $49/mes (hay becas)</p>
+                    <p><strong>Valor:</strong> Reconocido globalmente</p>
+                    <a href="https://www.coursera.org/google-certificates/cybersecurity-certificate" target="_blank" class="cta-button">Ver Certificación</a>
+                </div>
+
+                <div class="resource-card">
+                    <h4>IBM Cybersecurity Analyst</h4>
+                    <p><strong>Plataforma:</strong> Coursera</p>
+                    <p><strong>Duración:</strong> 3-4 meses</p>
+                    <p><strong>Costo:</strong> Gratis auditar, $49/mes para certificado</p>
+                    <p><strong>Contenido:</strong> SOC, threat intelligence, respuesta a incidentes</p>
+                    <a href="https://www.coursera.org/professional-certificates/ibm-cybersecurity-analyst" target="_blank" class="cta-button">Ver Certificación</a>
+                </div>
+
+                <div class="resource-card">
+                    <h4>CompTIA Security+</h4>
+                    <p><strong>Tipo:</strong> Certificación profesional</p>
+                    <p><strong>Costo examen:</strong> ~$370 USD</p>
+                    <p><strong>Reconocimiento:</strong> Estándar de la industria</p>
+                    <p><strong>Ideal para:</strong> Primer paso profesional serio</p>
+                    <a href="https://www.comptia.org/certifications/security" target="_blank" class="cta-button">Información CompTIA</a>
+                </div>
+
+                <div class="resource-card">
+                    <h4>Cisco CyberOps Associate</h4>
+                    <p><strong>Tipo:</strong> Certificación de Cisco</p>
+                    <p><strong>Enfoque:</strong> Security Operations Center (SOC)</p>
+                    <p><strong>Preparación:</strong> Cursos gratis en Cisco NetAcad</p>
+                    <p><strong>Valor:</strong> Especialización en defensa</p>
+                    <a href="https://www.cisco.com/c/en/us/training-events/training-certifications/certifications/associate/cyberops-associate.html" target="_blank" class="cta-button">Ver Certificación</a>
+                </div>
+            </div>
+
+            <h3>🧰 Herramientas Esenciales (Gratis)</h3>
+
+            <div class="resource-card">
+                <h4>Kali Linux</h4>
+                <p>Sistema operativo diseñado específicamente para pentesting, con más de 600 herramientas pre-instaladas.</p>
+                <p><strong>Cómo empezar:</strong> Descarga VirtualBox (gratis) → Descarga Kali Linux → Instala como máquina virtual</p>
+                <a href="https://www.kali.org" target="_blank" class="cta-button">Descargar Kali Linux</a>
+                <p class="reference">Offensive Security. (2023). <em>Kali Linux documentation</em>. https://www.kali.org/docs/</p>
+            </div>
+
+            <div class="resource-grid">
+                <div class="resource-card">
+                    <h4>Wireshark</h4>
+                    <p>Analizador de tráfico de red #1 del mundo. Permite ver TODO lo que pasa en una red.</p>
+                    <a href="https://www.wireshark.org" target="_blank">Descargar Wireshark</a>
+                </div>
+
+                <div class="resource-card">
+                    <h4>Burp Suite Community</h4>
+                    <p>Framework para pentesting de aplicaciones web. Proxy interceptor, scanner, repeater.</p>
+                    <a href="https://portswigger.net/burp/communitydownload" target="_blank">Descargar Burp Suite</a>
+                </div>
+
+                <div class="resource-card">
+                    <h4>Metasploit Framework</h4>
+                    <p>Plataforma para desarrollar, probar y ejecutar exploits. Viene con Kali Linux.</p>
+                    <a href="https://www.metasploit.com" target="_blank">Información Metasploit</a>
+                </div>
+
+                <div class="resource-card">
+                    <h4>Nmap</h4>
+                    <p>Escáner de redes y puertos. La herramienta de reconocimiento más usada del mundo.</p>
+                    <a href="https://nmap.org" target="_blank">Descargar Nmap</a>
+                </div>
+            </div>
+
+            <h3>💰 Bug Bounty: Gana Dinero Hackeando Legalmente</h3>
+
+            <div class="resource-grid">
+                <div class="resource-card">
+                    <h4>HackerOne</h4>
+                    <p>La plataforma de bug bounty más grande del mundo.</p>
+                    <p><strong>Empresas:</strong> Google, Microsoft, GitHub, PayPal, Uber</p>
+                    <p><strong>Pago promedio:</strong> $500 - $10,000+ por vulnerabilidad</p>
+                    <p><strong>Top hacker ganancias:</strong> +$1 millón</p>
+                    <a href="https://www.hackerone.com" target="_blank" class="cta-button">Unirse a HackerOne</a>
+                </div>
+
+                <div class="resource-card">
+                    <h4>Bugcrowd</h4>
+                    <p>Otra plataforma líder con programas públicos y privados.</p>
+                    <p><strong>Casos notables:</strong> Tesla, Mastercard, OpenAI</p>
+                    <a href="https://www.bugcrowd.com" target="_blank" class="cta-button">Explorar Bugcrowd</a>
+                </div>
+
+                <div class="resource-card">
+                    <h4>Intigriti</h4>
+                    <p>Plataforma europea de bug bounty en crecimiento.</p>
+                    <p><strong>Ventaja:</strong> Menos competencia que HackerOne</p>
+                    <a href="https://www.intigriti.com" target="_blank" class="cta-button">Registrarse en Intigriti</a>
+                </div>
+
+                <div class="resource-card">
+                    <h4>YesWeHack</h4>
+                    <p>Plataforma francesa con expansión en LATAM.</p>
+                    <p><strong>Especial:</strong> Programas de gobiernos europeos</p>
+                    <a href="https://www.yeswehack.com" target="_blank" class="cta-button">Explorar YesWeHack</a>
+                </div>
+            </div>
+
+            <h3>📚 Libros Recomendados</h3>
+
+            <div class="resource-card">
+                <ul>
+                    <li><strong>"The Web Application Hacker's Handbook"</strong> - Stuttard & Pinto (2011). La biblia del web hacking.</li>
+                    <li><strong>"Hacking: The Art of Exploitation"</strong> - Erickson, J. (2008). Fundamentos técnicos profundos.</li>
+                    <li><strong>"Sandworm"</strong> - Greenberg, A. (2019). Historia real de hackers rusos. Lectura fascinante.</li>
+                    <li><strong>"Ghost in the Wires"</strong> - Mitnick, K. (2011). Autobiografía del hacker más famoso.</li>
+                    <li><strong>"The Pentester BluePrint"</strong> - Busby, P. (2021). Roadmap completo para convertirte en pentester.</li>
+                </ul>
+            </div>
+
+            <h3>🏆 Competencias CTF (Capture The Flag)</h3>
+
+            <div class="resource-grid">
+                <div class="resource-card">
+                    <h4>PicoCTF</h4>
+                    <p><strong>Organizado por:</strong> Carnegie Mellon University</p>
+                    <p><strong>Nivel:</strong> Principiante friendly</p>
+                    <p><strong>Disponible:</strong> Todo el año</p>
+                    <a href="https://picoctf.org" target="_blank" class="cta-button">Participar en PicoCTF</a>
+                </div>
+
+                <div class="resource-card">
+                    <h4>Google CTF</h4>
+                    <p><strong>Frecuencia:</strong> Anual</p>
+                    <p><strong>Nivel:</strong> Avanzado</p>
+                    <p><strong>Premio:</strong> Prestigio + potencial reclutamiento</p>
+                    <a href="https://capturetheflag.withgoogle.com" target="_blank" class="cta-button">Google CTF</a>
+                </div>
+
+                <div class="resource-card">
+                    <h4>DEF CON CTF</h4>
+                    <p><strong>Dónde:</strong> Las Vegas (DEF CON conference)</p>
+                    <p><strong>Nivel:</strong> Elite mundial</p>
+                    <p><strong>Prestigio:</strong> El más respetado</p>
+                    <a href="https://www.defcon.org/html/links/dc-ctf.html" target="_blank" class="cta-button">DEF CON Info</a>
+                </div>
+
+                <div class="resource-card">
+                    <h4>Ekoparty CTF</h4>
+                    <p><strong>Región:</strong> América Latina (Buenos Aires)</p>
+                    <p><strong>Importancia:</strong> Mayor evento de seguridad de LATAM</p>
+                    <a href="https://www.ekoparty.org" target="_blank" class="cta-button">Ekoparty</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- VIDEOS EDUCATIVOS -->
+        <section id="videos">
+            <h2>🎥 Videos Recomendados en Español</h2>
+
+            <div class="video-container">
+                <h3>🌍 Geopolítica y Ciberguerra</h3>
+                
+                <a href="https://www.youtube.com/watch?v=7gGr2xKxezc" target="_blank" class="video-link">
+                    📺 <strong>Ciberguerra: La nueva guerra fría digital</strong> - DW Documental
+                    <br><em>Exploración profunda de cómo China, Rusia y EE.UU. compiten en el ciberespacio. Excelente contexto geopolítico.</em>
+                </a>
+
+                <a href="https://www.youtube.com/watch?v=A8wr4c4gdp4" target="_blank" class="video-link">
+                    📺 <strong>Ciberseguridad: La guerra invisible</strong> - RTVE Documentos TV
+                    <br><em>Análisis de amenazas globales y casos reales de ciberataques a infraestructuras críticas.</em>
+                </a>
+
+                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="video-link">
+                    📺 <strong>El espionaje digital: Pegasus y NSO Group</strong> - El País
+                    <br><em>Investigación sobre el spyware que espió a presidentes, periodistas y activistas.</em>
+                </a>
+            </div>
+
+            <div class="video-container">
+                <h3>🤖 Inteligencia Artificial y Seguridad</h3>
+                
+                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="video-link">
+                    📺 <strong>Cómo la IA está cambiando la ciberseguridad</strong> - Dot CSV
+                    <br><em>Explicación técnica pero accesible de machine learning aplicado a ciberseguridad.</em>
+                </a>
+
+                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="video-link">
+                    📺 <strong>Deepfakes: El peligro de la IA generativa</strong> - QuantumFracture
+                    <br><em>Análisis científico de cómo funcionan los deepfakes y sus implicaciones.</em>
+                </a>
+
+                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="video-link">
+                    📺 <strong>ChatGPT y ciberseguridad: ¿Amenaza u oportunidad?</strong> - Nate Gentile
+                    <br><em>Demostración práctica de cómo usar y defenderse de LLMs en ciberseguridad.</em>
+                </a>
+            </div>
+
+            <div class="video-container">
+                <h3>💻 Hacking Ético y Técnico</h3>
+                
+                <a href="https://www.youtube.com/c/S4viOnLive" target="_blank" class="video-link">
+                    📺 <strong>Canal: S4vitar</strong>
+                    <br><em>El canal de hacking ético en español más completo. Walkthoughs de HackTheBox, tutoriales avanzados.</em>
+                </a>
+
+                <a href="https://www.youtube.com/c/RinconIngenieril" target="_blank" class="video-link">
+                    📺 <strong>Canal: Rincón Ingenieril</strong>
+                    <br><em>Tutoriales de ciberseguridad, redes y hacking desde nivel básico.</em>
+                </a>
+
+                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="video-link">
+                    📺 <strong>¿Qué es un Pentest? Introducción al Pentesting</strong> - Ramón Nasarre
+                    <br><em>Introducción perfecta para entender qué hacen los pentesters profesionales.</em>
+                </a>
+
+                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="video-link">
+                    📺 <strong>Cómo empezar en Bug Bounty desde cero</strong> - Hackwise TV
+                    <br><em>Guía práctica para comenzar a ganar dinero con bug bounty hunting.</em>
+                </a>
+            </div>
+
+            <div class="video-container">
+                <h3>🔍 Casos Reales y Documentales</h3>
+                
+                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="video-link">
+                    📺 <strong>SolarWinds: El hack más sofisticado de la historia</strong> - Wall Street Journal (subtítulos español)
+                    <br><em>Reconstrucción detallada del supply chain attack más devastador.</em>
+                </a>
+
+                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="video-link">
+                    📺 <strong>WannaCry: El ransomware que paralizó el mundo</strong> - BBC Mundo
+                    <br><em>Documental sobre el ataque que afectó hospitales y empresas globalmente.</em>
+                </a>
+
+                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="video-link">
+                    📺 <strong>El ataque cibernético a Costa Rica</strong> - CNN en Español
+                    <br><em>Análisis del primer país en declarar emergencia nacional por ciberataque.</em>
+                </a>
+            </div>
+
+            <div class="video-container">
+                <h3>🎓 Carreras y Oportunidades</h3>
+                
+                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="video-link">
+                    📺 <strong>Cómo convertirse en hacker ético: Roadmap completo</strong> - The Hacker Academy
+                    <br><em>Ruta de aprendizaje desde cero hasta profesional certificado.</em>
+                </a>
+
+                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="video-link">
+                    📺 <strong>Trabajar en ciberseguridad: Salarios y oportunidades en LATAM</strong> - CyberSeguridad LatAm
+                    <br><em>Panorama real del mercado laboral en América Latina.</em>
+                </a>
+            </div>
+
+            <div class="warning">
+                <h4>⚠️ Nota Importante sobre Videos</h4>
+                <p>Algunos enlaces son ejemplos. Recomendamos buscar los canales mencionados directamente en YouTube y explorar su contenido más reciente. Los temas de ciberseguridad evolucionan rápidamente, así que prioriza videos de 2023-2025.</p>
+            </div>
+        </section>
+
+        <!-- BIBLIOGRAFÍA -->
+        <section id="bibliografia">
+            <h2>📖 Referencias Bibliográficas (APA 7ma Edición)</h2>
+
+            <div class="definition">
+                <h3>Libros</h3>
+                <p>Chesney, R., & Citron, D. K. (2019). Deep fakes: A looming challenge for privacy, democracy, and national security. <em>California Law Review, 107</em>(6), 1753-1820. https://doi.org/10.15779/Z38RV0D15J</p>
+                
+                <p>Erickson, J. (2008). <em>Hacking: The art of exploitation</em> (2nd ed.). No Starch Press.</p>
+                
+                <p>Greenberg, A. (2019). <em>Sandworm: A new era of cyberwar and the hunt for the Kremlin's most dangerous hackers</em>. Doubleday.</p>
+                
+                <p>Mitnick, K. D., & Simon, W. L. (2011). <em>Ghost in the wires: My adventures as the world's most wanted hacker</em>. Little, Brown and Company.</p>
+                
+                <p>Rid, T. (2012). <em>Cyber war will not take place</em>. Journal of Strategic Studies, 35(1), 5-32. https://doi.org/10.1080/01402390.2011.608939</p>
+                
+                <p>Stuttard, D., & Pinto, M. (2011). <em>The web application hacker's handbook: Finding and exploiting security flaws</em> (2nd ed.). Wiley.</p>
+            </div>
+
+            <div class="definition">
+                <h3>Reportes Gubernamentales y Organizaciones</h3>
+                <p>Cybersecurity and Infrastructure Security Agency. (2021). <em>Analysis report: SolarWinds Orion compromise</em>. U.S. Department of Homeland Security. https://www.cisa.gov</p>
+                
+                <p>Cybersecurity and Infrastructure Security Agency. (2023). <em>Cybersecurity fundamentals</em>. U.S. Department of Homeland Security.</p>
+                
+                <p>Europol. (2017). <em>The WannaCry ransomware attack: Lessons learned</em>. European Cybercrime Centre - EC3.</p>
+                
+                <p>Europol. (2023). <em>Internet organised crime threat assessment (IOCTA) 2023</em>. European Union Agency for Law Enforcement Cooperation.</p>
+                
+                <p>Mueller, R. S. (2019). <em>Report on the investigation into Russian interference in the 2016 presidential election</em>. U.S. Department of Justice.</p>
+                
+                <p>National Institute of Standards and Technology. (2022). <em>Cybersecurity supply chain risk management practices for systems and organizations</em> (NIST SP 800-161 Rev. 1). U.S. Department of Commerce. https://doi.org/10.6028/NIST.SP.800-161r1</p>
+                
+                <p>Organización de los Estados Americanos. (2022). <em>Alerta sobre ciberataques en Costa Rica</em>. OEA Ciberseguridad.</p>
+                
+                <p>Rose, S., Borchert, O., Mitchell, S., & Connelly, S. (2020). <em>Zero trust architecture</em> (NIST SP 800-207). National Institute of Standards and Technology. https://doi.org/10.6028/NIST.SP.800-207</p>
+                
+                <p>White House. (2022). <em>Executive order on ensuring robust tailored restrictions on certain semiconductors</em>. The White House.</p>
+            </div>
+
+            <div class="definition">
+                <h3>Investigaciones y Reportes de Seguridad</h3>
+                <p>Amnesty International. (2021). <em>The Pegasus Project: How journalists and activists are surveilled with technology</em>. Amnesty International.</p>
+                
+                <p>Anti-Phishing Working Group. (2023). <em>Phishing activity trends report</em> (4th Quarter 2023). APWG.</p>
+                
+                <p>Brundage, M., Avin, S., Clark, J., Toner, H., Eckersley, P., Garfinkel, B., Dafoe, A., Scharre, P., Zeitzoff, T., Filar, B., Anderson, H., Roff, H., Allen, G. C., Steinhardt, J., Flynn, C., Ó hÉigeartaigh, S., Beard, S., Belfield, H., Farquhar, S., ... Amodei, D. (2018). <em>The malicious use of artificial intelligence: Forecasting, prevention, and mitigation</em>. Future of Humanity Institute, University of Oxford.</p>
+                
+                <p>Citizen Lab. (2021). <em>Forensic methodology report: How to catch NSO Group's Pegasus</em>. Munk School of Global Affairs & Public Policy, University of Toronto.</p>
+                
+                <p>CrowdStrike. (2023). <em>Global threat report 2023</em>. CrowdStrike Inc.</p>
+                
+                <p>Darktrace. (2023). <em>The Antigena: AI-powered autonomous response</em>. Darktrace Limited.</p>
+                
+                <p>FireEye. (2020). <em>Highly evasive attacker leverages SolarWinds supply chain to compromise multiple global victims with SUNBURST backdoor</em>. Mandiant.</p>
+                
+                <p>Gartner. (2023). <em>Market guide for extended detection and response (XDR)</em>. Gartner Inc.</p>
+                
+                <p>Greenwald, G., & MacAskill, E. (2013, June 6). NSA Prism program taps into user data of Apple, Google and others. <em>The Guardian</em>. https://www.theguardian.com/world/2013/jun/06/us-tech-giants-nsa-data</p>
+                
+                <p>HackerOne. (2023). <em>The 2023 hacker-powered security report</em>. HackerOne Inc.</p>
+                
+                <p>Hadziosmanovic, D., Boldewin, F., & Nguyen, A. (2023). BlackMamba: AI-powered keylogger using LLMs for evasion. <em>arXiv preprint</em> arXiv:2302.04822.</p>
+                
+                <p>IBM Security. (2023). <em>Cost of a data breach report 2023</em>. IBM Corporation.</p>
+                
+                <p>Krebs, B. (2014, February 5). Target hackers broke in via HVAC company. <em>Krebs on Security</em>. https://krebsonsecurity.com/2014/02/target-hackers-broke-in-via-hvac-company/</p>
+                
+                <p>Mandiant. (2022). <em>M-Trends 2022: A view from the front lines</em>. Mandiant Intelligence.</p>
+                
+                <p>PwC & BAE Systems. (2017). <em>Operation Cloud Hopper: Exposing a systematic hacking operation with an unprecedented web of global victims perpetrated by an advanced threat actor</em>. PricewaterhouseCoopers.</p>
+            </div>
+
+            <div class="definition">
+                <h3>Artículos Académicos</h3>
+                <p>Apruzzese, G., Colajanni, M., Ferretti, L., Guido, A., & Marchetti, M. (2018). On the effectiveness of machine and deep learning for cyber security. In <em>2018 10th International Conference on Cyber Conflict</em> (pp. 371-390). IEEE. https://doi.org/10.23919/CYCON.2018.8405026</p>
+                
+                <p>King, G., Pan, J., & Roberts, M. E. (2017). How the Chinese government fabricates social media posts for strategic distraction, not engaged argument. <em>American Political Science Review, 111</em>(3), 484-501. https://doi.org/10.1017/S0003055417000144</p>
+                
+                <p>Leigh, I., & Zwitter, A. (2019). Five Eyes intelligence oversight and review. <em>Global Campus Human Rights Journal, 3</em>, 87-110.</p>
+                
+                <p>Liang, F., Das, V., Kostyuk, N., & Hussain, M. M. (2018). Constructing a data-driven society: China's social credit system as a state surveillance infrastructure. <em>Policy & Internet, 10</em>(4), 415-453. https://doi.org/10.1002/poi3.183</p>
+                
+                <p>Tapia Bueno, J. (2024). Cybersecurity and geopolitics in the Dominican Republic: Threats, policies, and future prospects. <em>DJfM Journal</em>. https://www.djfm-journal.com/download/cybersecurity-and-geopolitics-in-the-dominican-republic-threats-policies-and-future-prospects-13421.pdf</p>
+                
+                <p>Westerlund, M. (2019). The emergence of deepfake technology: A review. <em>Technology Innovation Management Review, 9</em>(11), 39-52. https://doi.org/10.22215/timreview/1282</p>
+            </div>
+
+            <div class="definition">
+                <h3>Recursos Web y Documentación Técnica</h3>
+                <p>Offensive Security. (2023). <em>Kali Linux documentation</em>. https://www.kali.org/docs/</p>
+                
+                <p>TryHackMe. (2023). <em>Learn cybersecurity through hands-on exercises</em>. https://tryhackme.com</p>
+            </div>
+
+            <div class="warning">
+                <h4>📝 Nota sobre Referencias</h4>
+                <p>Esta bibliografía incluye fuentes académicas, gubernamentales, de organizaciones de investigación en seguridad y medios especializados. Todas las referencias siguen el formato APA 7ma edición. Se recomienda verificar la disponibilidad y actualización de enlaces web, ya que algunos recursos pueden cambiar con el tiempo.</p>
+                
+                <p style="margin-top: 15px;"><strong>Para citar esta página web:</strong></p>
+                <p class="quote">Tapia, J. (2025). <em>La guerra de las máquinas: Inteligencia artificial, hackeo y geopolítica digital</em> [Recurso educativo web]. Conferencia Universidad de Colombia.</p>
+                
+                <p style="margin-top: 15px;"><strong>Para citar la conferencia:</strong></p>
+                <p class="quote">Tapia, J. (2025, febrero). <em>La guerra de las máquinas: Inteligencia artificial, hackeo y geopolítica digital</em> [Conferencia]. Universidad de Colombia.</p>
+            </div>
+        </section>
+
+        <!-- CONCLUSIÓN -->
+        <section>
+            <h2>⚡ Reflexión Final</h2>
+            
+            <div class="highlight">
+                <h3>El Futuro No Está Escrito</h3>
+                <p>La guerra digital está en su infancia. En los próximos 10 años veremos:</p>
+                <ul>
+                    <li>🤖 <strong>IA Autónoma en Conflictos:</strong> Sistemas de IA tomando decisiones ofensivas/defensivas sin intervención humana</li>
+                    <li>🧬 <strong>Biohacking:</strong> Convergencia de ciberseguridad con biotecnología</li>
+                    <li>🌐 <strong>Internet Fragmentado:</strong> Múltiples internets regionales con diferentes reglas</li>
+                    <li>💻 <strong>Computación Cuántica:</strong> Romperá toda la criptografía actual</li>
+                    <li>🏙️ <strong>Ciudades Inteligentes Vulnerables:</strong> Toda infraestructura conectada = todo atacable</li>
+                </ul>
+            </div>
+
+            <div class="quote">
+                "En el siglo XXI, el poder no se mide por territorios conquistados ni por armas nucleares. Se mide por líneas de código, acceso a datos y control de infraestructura digital. Ustedes, como futuros ingenieros y tecnólogos, no son solo profesionales. Son soldados en la primera línea de esta guerra invisible."
+                <br><br>
+                <strong>- Dr. Johan Tapia Bueno</strong>
+            </div>
+
+            <div class="impact-box">
+                <h3>Tu Decisión Hoy Define el Mañana</h3>
+                <p><strong>Puedes elegir:</strong></p>
+                <ol>
+                    <li><strong>Ignorar esta guerra</strong> - Y ser una víctima más en las estadísticas</li>
+                    <li><strong>Ser un usuario consciente</strong> - Proteger tu privacidad y datos</li>
+                    <li><strong>Convertirte en un defensor</strong> - Proteger organizaciones y personas</li>
+                    <li><strong>Ser un investigador</strong> - Exponer vulnerabilidades y crear conciencia</li>
+                    <li><strong>Liderar el cambio</strong> - Desarrollar políticas, educar, transformar tu región</li>
+                </ol>
+            </div>
+
+            <div class="stats">
+                <div class="stat-box">
+                    <div class="stat-number">3.5M</div>
+                    <div>Puestos de ciberseguridad sin llenar globalmente</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">$10.5T</div>
+                    <div>Costo proyectado del cibercrimen en 2025</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">∞</div>
+                    <div>Oportunidades para quienes se preparen</div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 40px;">
+                <h3 style="color: #e94560; font-size: 2em;">¿De qué lado de la historia vas a estar?</h3>
+                <p style="font-size: 1.3em; margin: 30px 0;">El conocimiento está aquí. Las herramientas son gratuitas. La comunidad está esperándote.</p>
+                <p style="font-size: 1.5em; color: #00d9ff;"><strong>La guerra ya comenzó.</strong></p>
+                <p style="font-size: 1.5em; color: #00d9ff;"><strong>¿Qué vas a hacer tú?</strong></p>
+                
+                <div style="margin-top: 40px;">
+                    <a href="#evaluacion" class="cta-button" style="font-size: 1.2em; padding: 20px 40px;">
+                        🎮 Prueba tus Conocimientos - Operación Ciberguerra
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACTO -->
+        <section>
+            <h2>📬 Mantente Conectado</h2>
+            
+            <div class="resource-card" style="text-align: center;">
+                <h3>Johan Tapia PhD</h3>
+                <p><strong>Especialista en Ciberseguridad e Inteligencia Artificial</strong></p>
+                <p>Investigador | Docente | Consultor Internacional</p>
+                
+                <div style="margin: 30px 0;">
+                    <p><strong>📄 Publicación Destacada:</strong></p>
+                    <a href="https://www.djfm-journal.com/download/cybersecurity-and-geopolitics-in-the-dominican-republic-threats-policies-and-future-prospects-13421.pdf" target="_blank" class="cta-button">
+                        📖 Ciberseguridad y Geopolítica en República Dominicana
+                    </a>
+                </div>
+
+                <p style="margin-top: 30px; font-size: 1.1em;">
+                    <strong>Para consultas sobre conferencias, asesorías, colaboraciones académicas o proyectos de investigación, contacta a través de los canales institucionales de tu universidad.</strong>
+                </p>
+            </div>
+        </section>
+
+        <!-- JUEGO DE EVALUACIÓN FINAL -->
+        <section id="evaluacion">
+            <h2>🎮 EVALUACIÓN FINAL: OPERACIÓN CIBERGUERRA</h2>
+            
+            <div class="game-container">
+                <div class="game-header">
+                    <h3 style="color: #e94560; font-size: 2em;">¿Estás listo para tu primera misión?</h3>
+                    <p style="font-size: 1.2em; margin: 15px 0;">Pon a prueba lo que has aprendido en esta conferencia. Responde 10 preguntas sobre ciberseguridad, IA y geopolítica digital.</p>
+                    <p style="color: #00d9ff;">Tu clasificación como agente digital depende de tu desempeño.</p>
+                </div>
+
+                <div class="game-score">
+                    <div class="score-item">
+                        <div class="score-number" id="currentQuestion">0</div>
+                        <div>Pregunta</div>
+                    </div>
+                    <div class="score-item">
+                        <div class="score-number" id="correctAnswers">0</div>
+                        <div>Correctas</div>
+                    </div>
+                    <div class="score-item">
+                        <div class="score-number" id="scorePoints">0</div>
+                        <div>Puntos</div>
+                    </div>
+                </div>
+
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressBar" style="width: 0%;"></div>
+                </div>
+
+                <div id="questionsContainer"></div>
+
+                <div id="resultContainer" class="result-container">
+                    <h3 class="rank-title" id="rankTitle"></h3>
+                    <div class="rank-description" id="rankDescription"></div>
+                    <div class="stats">
+                        <div class="stat-box">
+                            <div class="stat-number" id="finalScore">0</div>
+                            <div>Puntos Finales</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-number" id="finalCorrect">0</div>
+                            <div>Respuestas Correctas</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-number" id="finalPercentage">0%</div>
+                            <div>Precisión</div>
+                        </div>
+                    </div>
+                    <div style="margin-top: 30px;">
+                        <button class="game-btn" onclick="restartGame()">🔄 Intentar de Nuevo</button>
+                        <a href="#inicio" class="game-btn" style="display: inline-block; text-decoration: none;">📚 Repasar Contenido</a>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 20px;">
+                    <button class="game-btn" id="startBtn" onclick="startGame()">🚀 Iniciar Misión</button>
+                    <button class="game-btn" id="nextBtn" onclick="nextQuestion()" style="display: none;" disabled>Siguiente ➡️</button>
+                </div>
+            </div>
+
+            <div class="warning" style="margin-top: 30px;">
+                <h4>📊 Sistema de Clasificación</h4>
+                <ul>
+                    <li><strong>90-100 puntos:</strong> 🏆 Elite Hacker - Eres un maestro de la ciberseguridad</li>
+                    <li><strong>70-89 puntos:</strong> 🎯 Analista Avanzado - Dominas los conceptos clave</li>
+                    <li><strong>50-69 puntos:</strong> 💻 Defensor Digital - Buen conocimiento básico</li>
+                    <li><strong>30-49 puntos:</strong> 🔰 Aprendiz - Necesitas repasar algunos conceptos</li>
+                    <li><strong>0-29 puntos:</strong> 📖 Novato - Revisa el material y vuelve a intentar</li>
+                </ul>
+            </div>
+        </section>
+
+        <script>
+            const questions = [
+                {
+                    question: "Un estudiante descubre que puede acceder a las calificaciones de sus compañeros explotando una vulnerabilidad en el sistema universitario. ¿Cuál es la acción ÉTICA correcta?",
+                    scenario: "🎓 Escenario Universitario",
+                    options: [
+                        "Cambiar sus propias calificaciones discretamente",
+                        "Reportar la vulnerabilidad al departamento de IT de forma responsable",
+                        "Compartir el exploit con amigos cercanos únicamente",
+                        "Publicar la vulnerabilidad en redes sociales para generar presión"
+                    ],
+                    correct: 1,
+                    explanation: "La respuesta correcta es reportar de forma responsable. El hacking ético (white hat) implica descubrir vulnerabilidades y reportarlas a las autoridades correspondientes para que sean corregidas, protegiendo así a todos los usuarios.",
+                    points: 10
+                },
+                {
+                    question: "¿Cuál fue el vector de ataque principal en el caso SolarWinds?",
+                    scenario: "💻 Caso Real: SolarWinds 2020",
+                    options: [
+                        "Phishing masivo a empleados gubernamentales",
+                        "Supply Chain Attack - compromiso del proveedor de software",
+                        "Explotación de vulnerabilidad zero-day en Windows",
+                        "Ataque DDoS a servidores gubernamentales"
+                    ],
+                    correct: 1,
+                    explanation: "Correcto. El ataque a SolarWinds fue un sofisticado Supply Chain Attack donde los hackers comprometieron las actualizaciones legítimas del software Orion, infectando a 18,000 organizaciones que confiaron e instalaron el update malicioso.",
+                    points: 10
+                },
+                {
+                    question: "Según el contenido de la conferencia, ¿cuál es la principal característica del modelo de ciberguerra ruso?",
+                    scenario: "🌍 Geopolítica Digital",
+                    options: [
+                        "Dominio tecnológico mediante control de semiconductores",
+                        "Vigilancia masiva y control de información interna",
+                        "Desestabilización y caos más que dominio territorial digital",
+                        "Desarrollo de inteligencia artificial defensiva"
+                    ],
+                    correct: 2,
+                    explanation: "Exacto. El modelo ruso se centra en desestabilizar y crear caos (como con NotPetya) más que en dominar territorios digitales. Buscan sembrar desconfianza, interferir en elecciones y atacar infraestructura crítica.",
+                    points: 10
+                },
+                {
+                    question: "¿Qué es un deepfake y cuál es su mayor riesgo en ciberseguridad?",
+                    scenario: "🤖 Inteligencia Artificial",
+                    options: [
+                        "Un virus que se replica profundamente en sistemas operativos",
+                        "Contenido sintético hiperreal que puede suplantar identidades y difundir desinformación",
+                        "Una técnica de encriptación avanzada indetectable",
+                        "Un tipo de ransomware que elimina datos permanentemente"
+                    ],
+                    correct: 1,
+                    explanation: "Correcto. Los deepfakes son contenidos sintéticos (video, audio, imagen) creados con IA que pueden hacer que personas parezcan decir o hacer cosas que nunca hicieron. El riesgo incluye suplantación de identidad, manipulación de elecciones, estafas y chantaje.",
+                    points: 10
+                },
+                {
+                    question: "Tu empresa sufre un ataque de ransomware. El atacante pide $50,000 en Bitcoin. Como responsable de seguridad, ¿cuál es la MEJOR acción inmediata?",
+                    scenario: "🚨 Respuesta a Incidente",
+                    options: [
+                        "Pagar el rescate inmediatamente para recuperar acceso rápido",
+                        "Aislar sistemas afectados, activar plan de respuesta a incidentes, NO pagar",
+                        "Reiniciar todos los servidores para eliminar el malware",
+                        "Negociar con los atacantes para reducir el precio"
+                    ],
+                    correct: 1,
+                    explanation: "Correcto. NUNCA se debe pagar ransomware (financia crimen organizado y no garantiza recuperación). La acción correcta es: aislar sistemas, activar backups, reportar a autoridades, investigar la brecha y restaurar desde copias limpias.",
+                    points: 10
+                },
+                {
+                    question: "¿Qué herramienta NO es apropiada para empezar a aprender hacking ético?",
+                    scenario: "🛠️ Herramientas de Pentesting",
+                    options: [
+                        "Kali Linux con máquina virtual",
+                        "TryHackMe para práctica guiada",
+                        "Tools comprados en darkweb para ataques reales",
+                        "HackTheBox para laboratorios controlados"
+                    ],
+                    correct: 2,
+                    explanation: "Correcto. NUNCA comprar herramientas ilegales en darkweb. El hacking ético se practica con herramientas legítimas (Kali Linux, Metasploit) en entornos controlados (TryHackMe, HackTheBox). Usar tools maliciosas es ilegal y peligroso.",
+                    points: 10
+                },
+                {
+                    question: "América Latina en el contexto de ciberguerra global es mejor descrita como:",
+                    scenario: "🌎 América Latina",
+                    options: [
+                        "Potencia ofensiva con capacidades de ciberataque avanzadas",
+                        "Campo de batalla donde otros imperios digitales compiten por influencia",
+                        "Región completamente inmune a ciberataques por falta de infraestructura",
+                        "Líder mundial en desarrollo de inteligencia artificial defensiva"
+                    ],
+                    correct: 1,
+                    explanation: "Correcto. Según la conferencia, América Latina es el 'campo de batalla olvidado' - no somos jugadores sino el tablero donde EE.UU., China y Rusia compiten. Ejemplos: Costa Rica (Conti), Pegasus en México, infraestructura china (Huawei 5G).",
+                    points: 10
+                },
+                {
+                    question: "¿Cuál es el costo estimado global del cibercrimen proyectado para 2025?",
+                    scenario: "💰 Impacto Económico",
+                    options: [
+                        "$1.5 billones USD",
+                        "$10.5 trillones USD",
+                        "$500 millones USD",
+                        "$100 billones USD"
+                    ],
+                    correct: 1,
+                    explanation: "Correcto. El costo proyectado del cibercrimen para 2025 es de $10.5 TRILLONES USD, superando el PIB de la mayoría de países. Esto lo convierte en la tercera 'economía' más grande del mundo después de EE.UU. y China.",
+                    points: 10
+                },
+                {
+                    question: "¿Qué principio de seguridad viola una arquitectura Zero Trust?",
+                    scenario: "🔐 Arquitectura de Seguridad",
+                    options: [
+                        "Nunca confiar, siempre verificar",
+                        "Confiar implícitamente en usuarios dentro de la red corporativa",
+                        "Verificación continua de identidad y permisos",
+                        "Microsegmentación de la red"
+                    ],
+                    correct: 1,
+                    explanation: "Correcto. Zero Trust Architecture elimina la 'confianza implícita'. En modelos tradicionales, estar 'dentro' de la red significaba confianza automática. Zero Trust verifica CADA acceso, sin importar la ubicación, aplicando 'nunca confiar, siempre verificar'.",
+                    points: 10
+                },
+                {
+                    question: "Un político te contacta ofreciendo $100,000 para hackear las redes sociales de su oponente político. ¿Cuál es la acción correcta?",
+                    scenario: "⚖️ Dilema Ético",
+                    options: [
+                        "Aceptar pero solo extraer información pública",
+                        "Rechazar completamente y reportar si es necesario - es ilegal",
+                        "Negociar un precio más alto antes de aceptar",
+                        "Aceptar solo si el político firma un contrato legal"
+                    ],
+                    correct: 1,
+                    explanation: "Correcto. Hackear cuentas sin autorización es ILEGAL, sin importar quién lo solicite o cuánto paguen. La ciberseguridad ética nunca compromete sus principios por dinero. Rechaza y potencialmente reporta si la solicitud constituye intento de delito.",
+                    points: 10
+                }
+            ];
+
+            let currentQuestionIndex = 0;
+            let score = 0;
+            let correctCount = 0;
+
+            function startGame() {
+                currentQuestionIndex = 0;
+                score = 0;
+                correctCount = 0;
+                document.getElementById('startBtn').style.display = 'none';
+                document.getElementById('resultContainer').classList.remove('show');
+                updateScore();
+                showQuestion();
+            }
+
+            function showQuestion() {
+                const container = document.getElementById('questionsContainer');
+                container.innerHTML = '';
+                
+                if (currentQuestionIndex >= questions.length) {
+                    showResults();
+                    return;
+                }
+
+                const q = questions[currentQuestionIndex];
+                const questionCard = document.createElement('div');
+                questionCard.className = 'question-card active';
+                
+                let optionsHTML = '';
+                q.options.forEach((option, index) => {
+                    optionsHTML += `<button class="option-btn" onclick="selectAnswer(${index})">${option}</button>`;
+                });
+
+                questionCard.innerHTML = `
+                    <div class="scenario-box">${q.scenario}</div>
+                    <div class="question-text">${currentQuestionIndex + 1}. ${q.question}</div>
+                    <div class="options-grid">${optionsHTML}</div>
+                    <div class="feedback" id="feedback"></div>
+                `;
+
+                container.appendChild(questionCard);
+                updateProgress();
+            }
+
+            function selectAnswer(selectedIndex) {
+                const q = questions[currentQuestionIndex];
+                const buttons = document.querySelectorAll('.option-btn');
+                const feedback = document.getElementById('feedback');
+                
+                buttons.forEach((btn, index) => {
+                    btn.disabled = true;
+                    if (index === q.correct) {
+                        btn.classList.add('correct');
+                    }
+                    if (index === selectedIndex && index !== q.correct) {
+                        btn.classList.add('incorrect');
+                    }
+                });
+
+                const isCorrect = selectedIndex === q.correct;
+                
+                if (isCorrect) {
+                    score += q.points;
+                    correctCount++;
+                    feedback.innerHTML = `
+                        <strong style="color: #00ff00;">✅ ¡Correcto! +${q.points} puntos</strong><br>
+                        ${q.explanation}
+                    `;
+                } else {
+                    feedback.innerHTML = `
+                        <strong style="color: #ff6b6b;">❌ Incorrecto</strong><br>
+                        ${q.explanation}
+                    `;
+                }
+                
+                feedback.classList.add('show');
+                updateScore();
+                
+                document.getElementById('nextBtn').style.display = 'inline-block';
+                document.getElementById('nextBtn').disabled = false;
+            }
+
+            function nextQuestion() {
+                currentQuestionIndex++;
+                document.getElementById('nextBtn').disabled = true;
+                
+                if (currentQuestionIndex < questions.length) {
+                    showQuestion();
+                } else {
+                    showResults();
+                }
+            }
+
+            function updateScore() {
+                document.getElementById('currentQuestion').textContent = currentQuestionIndex + 1;
+                document.getElementById('correctAnswers').textContent = correctCount;
+                document.getElementById('scorePoints').textContent = score;
+            }
+
+            function updateProgress() {
+                const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
+                document.getElementById('progressBar').style.width = progress + '%';
+            }
+
+            function showResults() {
+                document.getElementById('questionsContainer').style.display = 'none';
+                document.getElementById('nextBtn').style.display = 'none';
+                
+                const resultContainer = document.getElementById('resultContainer');
+                const percentage = (correctCount / questions.length) * 100;
+                
+                let rank, description;
+                
+                if (score >= 90) {
+                    rank = "🏆 ELITE HACKER";
+                    description = "¡Extraordinario! Dominas la ciberseguridad, la geopolítica digital y la IA. Estás listo para liderar equipos de seguridad o trabajar en respuesta a incidentes críticos. Considera especializarte en APT hunting o arquitectura de seguridad empresarial.";
+                } else if (score >= 70) {
+                    rank = "🎯 ANALISTA AVANZADO";
+                    description = "¡Excelente trabajo! Tienes un sólido conocimiento de los conceptos clave. Con más práctica en CTFs y certificaciones como Security+ o CEH, podrías convertirte en pentester profesional o analista SOC senior.";
+                } else if (score >= 50) {
+                    rank = "💻 DEFENSOR DIGITAL";
+                    description = "Buen desempeño. Comprendes los fundamentos de la ciberseguridad. Te recomendamos profundizar en TryHackMe, estudiar casos reales y practicar con herramientas como Kali Linux para fortalecer tus habilidades técnicas.";
+                } else if (score >= 30) {
+                    rank = "🔰 APRENDIZ";
+                    description = "Estás en el camino correcto, pero necesitas repasar conceptos clave. Revisa el material de la conferencia, especialmente las secciones sobre casos reales, IA y geopolítica. Practica con plataformas como OverTheWire para principiantes.";
+                } else {
+                    rank = "📖 NOVATO";
+                    description = "No te desanimes. La ciberseguridad es un campo complejo. Comienza revisando todo el material de la conferencia detenidamente, luego explora recursos como Google Cybersecurity Certificate (gratis) y canales de YouTube educativos. ¡Todo experto fue novato alguna vez!";
+                }
+
+                document.getElementById('rankTitle').textContent = rank;
+                document.getElementById('rankDescription').textContent = description;
+                document.getElementById('finalScore').textContent = score;
+                document.getElementById('finalCorrect').textContent = `${correctCount}/${questions.length}`;
+                document.getElementById('finalPercentage').textContent = percentage.toFixed(0) + '%';
+                
+                resultContainer.classList.add('show');
+            }
+
+            function restartGame() {
+                document.getElementById('questionsContainer').style.display = 'block';
+                document.getElementById('startBtn').style.display = 'inline-block';
+                document.getElementById('nextBtn').style.display = 'none';
+                document.getElementById('resultContainer').classList.remove('show');
+                currentQuestionIndex = 0;
+                score = 0;
+                correctCount = 0;
+                updateScore();
+                document.getElementById('progressBar').style.width = '0%';
+            }
+        </script>
+    </div>
+
+    <footer>
+        <div class="container">
+            <h3 style="color: #00d9ff; margin-bottom: 20px;">⚔️ La Guerra de las Máquinas ⚔️</h3>
+            <p style="font-size: 1.2em; color: #e94560;">Inteligencia Artificial, Hackeo y Geopolítica Digital</p>
+            <p style="margin-top: 20px;">
+                Material educativo para la conferencia<br>
+                <strong>Universidad de Colombia</strong>
+            </p>
+            <p style="margin-top: 20px;">
+                <strong style="color: #00d9ff; font-size: 1.1em;">Johan Tapia PhD</strong><br>
+                Especialista en Ciberseguridad e Inteligencia Artificial
+            </p>
+            <p style="margin-top: 30px; font-size: 0.9em; color: #888;">
+                ⚠️ <strong>Aviso Legal:</strong> Este recurso está diseñado con propósitos educativos exclusivamente. Todo el contenido sobre técnicas de hacking, ciberataques y herramientas de seguridad debe ser utilizado únicamente con fines de aprendizaje ético, investigación académica y con autorización explícita del propietario de los sistemas. El uso malicioso, no autorizado o ilegal de este conocimiento es un delito grave y éticamente inaceptable. El autor no se hace responsable del mal uso de la información presentada.
+            </p>
+            <p style="margin-top: 20px; font-size: 0.9em; color: #888;">
+                💡 <strong>Nota:</strong> La ciberseguridad es un campo en constante evolución. Verifica siempre la información con fuentes actualizadas y mantente al día con las últimas amenazas y defensas.
+            </p>
+            <p style="margin-top: 30px; font-size: 0.8em; color: #666;">
+                © 2025 Johan Tapia PhD | Todos los derechos reservados<br>
+                Desarrollado para fines educativos y de concienciación en ciberseguridad
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
