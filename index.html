@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ciberseguridad para Mentes Curiosas | Johan Tapia PhD</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --neon-blue: #00f3ff;
+            --neon-purple: #9D4EDD;
+            --neon-pink: #FF006E;
+            --neon-green: #00ff41;
+            --dark-bg: #0a0a0a;
+            --dark-card: #1a1a2e;
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--dark-bg);
+            color: #e0e0e0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(157, 78, 221, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(0, 243, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(255, 0, 110, 0.1) 0%, transparent 50%);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="8" fill="%2300f3ff" opacity="0.03" font-family="monospace">10101010</text></svg>');
+            animation: scroll-bg 20s linear infinite;
+        }
+
+        @keyframes scroll-bg {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(100px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1000px;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple), var(--neon-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                filter: drop-shadow(0 0 20px rgba(0, 243, 255, 0.5));
+            }
+            to {
+                filter: drop-shadow(0 0 40px rgba(157, 78, 221, 0.8));
+            }
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            color: var(--neon-purple);
+            margin-bottom: 15px;
+            font-weight: 300;
+        }
+
+        .hero-author {
+            font-size: clamp(1rem, 2vw, 1.5rem);
+            color: var(--neon-blue);
+            margin-bottom: 40px;
+            font-weight: 600;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 18px 45px;
+            background: var(--gradient-3);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(0, 243, 255, 0.3);
+            margin: 10px;
+            border: 2px solid transparent;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 243, 255, 0.5);
+            border-color: var(--neon-blue);
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            border: 2px solid var(--neon-purple);
+            color: var(--neon-purple);
+            box-shadow: 0 10px 30px rgba(157, 78, 221, 0.3);
+        }
+
+        .cta-button.secondary:hover {
+            background: var(--gradient-1);
+            color: white;
+            box-shadow: 0 15px 40px rgba(157, 78, 221, 0.5);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 20px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            padding: 0 20px;
+        }
+
+        nav a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+            padding: 5px 10px;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--neon-blue);
+            transition: width 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--neon-blue);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        /* Section Styles */
+        section {
+            margin-bottom: 100px;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            color: var(--neon-blue);
+            margin-bottom: 50px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--gradient-3);
+            border-radius: 2px;
+        }
+
+        /* Cards */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .card {
+            background: var(--dark-card);
+            padding: 35px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-3);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 243, 255, 0.2);
+            border-color: var(--neon-blue);
+        }
+
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            color: var(--neon-purple);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            color: #b0b0b0;
+            line-height: 1.8;
+        }
+
+        .card ul {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .card li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: #d0d0d0;
+        }
+
+        .card li:last-child {
+            border-bottom: none;
+        }
+
+        .card li::before {
+            content: '▸ ';
+            color: var(--neon-blue);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(157, 78, 221, 0.2), rgba(0, 243, 255, 0.2));
+            padding: 40px;
+            border-radius: 20px;
+            border: 2px solid var(--neon-purple);
+            margin: 40px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .highlight-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .highlight-box h3 {
+            font-size: 2rem;
+            color: var(--neon-pink);
+            margin-bottom: 20px;
+        }
+
+        .highlight-box p {
+            font-size: 1.2rem;
+            color: #e0e0e0;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding: 40px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: var(--gradient-1);
+        }
+
+        .timeline-item {
+            display: flex;
+            justify-content: flex-end;
+            padding: 30px 0;
+            position: relative;
+            width: 50%;
+        }
+
+        .timeline-item:nth-child(even) {
+            align-self: flex-end;
+            justify-content: flex-start;
+            margin-left: 50%;
+            padding-left: 50px;
+        }
+
+        .timeline-item:nth-child(odd) {
+            padding-right: 50px;
+        }
+
+        .timeline-content {
+            background: var(--dark-card);
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--neon-blue);
+            box-shadow: 0 0 20px var(--neon-blue);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content::before {
+            right: -60px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::before {
+            left: -60px;
+        }
+
+        .timeline-content h4 {
+            color: var(--neon-purple);
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        /* Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+
+        .stat-box {
+            background: var(--dark-card);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+        }
+
+        .stat-box:hover {
+            border-color: var(--neon-pink);
+            transform: scale(1.05);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 900;
+            background: var(--gradient-2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            color: #b0b0b0;
+            font-size: 1rem;
+        }
+
+        /* Resources Section */
+        .resource-item {
+            background: var(--dark-card);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--neon-blue);
+            transition: all 0.3s;
+        }
+
+        .resource-item:hover {
+            border-left-color: var(--neon-pink);
+            transform: translateX(10px);
+        }
+
+        .resource-item h4 {
+            color: var(--neon-blue);
+            margin-bottom: 10px;
+        }
+
+        .resource-item a {
+            color: var(--neon-purple);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .resource-item a:hover {
+            color: var(--neon-pink);
+        }
+
+        /* Quote */
+        .quote-box {
+            background: linear-gradient(135deg, rgba(255, 0, 110, 0.1), rgba(157, 78, 221, 0.1));
+            padding: 50px;
+            border-radius: 20px;
+            border-left: 5px solid var(--neon-pink);
+            margin: 60px 0;
+            position: relative;
+        }
+
+        .quote-box::before {
+            content: '"';
+            font-size: 8rem;
+            color: rgba(255, 0, 110, 0.2);
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            font-family: Georgia, serif;
+        }
+
+        .quote-text {
+            font-size: 1.8rem;
+            font-style: italic;
+            color: #e0e0e0;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .quote-author {
+            text-align: right;
+            color: var(--neon-blue);
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(10, 10, 10, 0.98);
+            padding: 60px 20px 30px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        footer h3 {
+            color: var(--neon-blue);
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        footer p {
+            color: #888;
+            margin: 10px 0;
+        }
+
+        .social-links {
+            margin: 30px 0;
+        }
+
+        .social-links a {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            border-radius: 50%;
+            background: var(--dark-card);
+            color: var(--neon-blue);
+            text-decoration: none;
+            margin: 0 10px;
+            transition: all 0.3s;
+            border: 2px solid var(--neon-blue);
+        }
+
+        .social-links a:hover {
+            background: var(--gradient-3);
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 243, 255, 0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item,
+            .timeline-item:nth-child(even) {
+                width: 100%;
+                padding-left: 60px !important;
+                padding-right: 0 !important;
+                margin-left: 0 !important;
+            }
+
+            .timeline-content::before {
+                left: -59px !important;
+            }
+
+            nav ul {
+                gap: 15px;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s, transform 0.6s;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Badges */
+        .badge {
+            display: inline-block;
+            padding: 8px 15px;
+            background: var(--gradient-1);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin: 5px;
+            font-weight: 600;
+        }
+
+        .badge.green {
+            background: linear-gradient(135deg, #00ff41, #00d9ff);
+        }
+
+        .badge.pink {
+            background: var(--gradient-2);
+        }
+    </style>
+</head>
+<body>
+    <div class="animated-bg"></div>
+
+    <nav>
+        <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#por-que">¿Por qué?</a></li>
+            <li><a href="#amenazas">Amenazas</a></li>
+            <li><a href="#ia">IA</a></li>
+            <li><a href="#camino">Tu Camino</a></li>
+            <li><a href="#recursos">Recursos</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <h1 class="hero-title">Ciberseguridad para Mentes Curiosas</h1>
+            <p class="hero-subtitle">Entre el caos, la ética y la inteligencia artificial</p>
+            <p class="hero-author">Johan Tapia PhD</p>
+            <div>
+                <a href="#por-que" class="cta-button">Comenzar el Viaje</a>
+                <a href="#recursos" class="cta-button secondary">Ver Recursos</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- POR QUÉ ESTA CHARLA -->
+        <section id="por-que" class="fade-in">
+            <h2 class="section-title">¿Por qué esta charla?</h2>
+            
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-number">70%</div>
+                    <div class="stat-label">Universidades han sufrido ciberataques</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">$6T</div>
+                    <div class="stat-label">Costo global del cibercrimen (2024)</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">3.5M</div>
+                    <div class="stat-label">Puestos de ciberseguridad vacantes</div>
+                </div>
+            </div>
+
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon">🎓</div>
+                    <h3>Universidades bajo Ataque</h3>
+                    <p>Las instituciones educativas son objetivos frecuentes debido a:</p>
+                    <ul>
+                        <li>Datos valiosos de investigación</li>
+                        <li>Información personal de miles de estudiantes</li>
+                        <li>Redes abiertas con múltiples puntos de acceso</li>
+                        <li>Usuarios con diferentes niveles de conciencia de seguridad</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">🛡️</div>
+                    <h3>Tú eres la Primera Línea</h3>
+                    <p>Como estudiante, eres parte fundamental de la defensa:</p>
+                    <ul>
+                        <li>Detectas intentos de phishing en tu email</li>
+                        <li>Proteges tus credenciales de acceso</li>
+                        <li>Reportas actividades sospechosas</li>
+                        <li>Educas a tus compañeros</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">🤖</div>
+                    <h3>La IA Cambia las Reglas</h3>
+                    <p>La inteligencia artificial está revolucionando todo:</p>
+                    <ul>
+                        <li>Ataques automatizados más sofisticados</li>
+                        <li>Defensas que aprenden en tiempo real</li>
+                        <li>Nuevos dilemas éticos y técnicos</li>
+                        <li>Oportunidades profesionales sin precedentes</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- CIBERSEGURIDAD = CURIOSIDAD + ÉTICA -->
+        <section id="concepto" class="fade-in">
+            <h2 class="section-title">Ciberseguridad = Curiosidad + Ética</h2>
+            
+            <div class="highlight-box">
+                <h3>Más que Antivirus</h3>
+                <p>La ciberseguridad es proteger sistemas, redes y datos de ataques digitales. Pero también es:</p>
+                <div style="margin-top: 20px;">
+                    <span class="badge">Confidencialidad</span>
+                    <span class="badge green">Integridad</span>
+                    <span class="badge pink">Disponibilidad</span>
+                    <span class="badge">Personas</span>
+                    <span class="badge green">Procesos</span>
+                    <span class="badge pink">Tecnología</span>
+                </div>
+            </div>
+
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon">👨‍💻</div>
+                    <h3>White Hat (Sombrero Blanco)</h3>
+                    <p><strong>Los Buenos:</strong> Hackers éticos que usan sus habilidades para proteger. Trabajan legalmente encontrando vulnerabilidades antes que los criminales.</p>
+                    <p style="margin-top: 15px; color: var(--neon-green);">✓ Permiso explícito | ✓ Reportan vulnerabilidades | ✓ Siguen la ley</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">🎭</div>
+                    <h3>Grey Hat (Sombrero Gris)</h3>
+                    <p><strong>La Zona Gris:</strong> Hackean sin permiso pero sin intenciones maliciosas. Pueden encontrar vulnerabilidades y notificar... pero sin autorización previa.</p>
+                    <p style="margin-top: 15px; color: #ffd700;">⚠ Éticamente cuestionable | ⚠ Legalmente arriesgado</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">💀</div>
+                    <h3>Black Hat (Sombrero Negro)</h3>
+                    <p><strong>Los Maliciosos:</strong> Criminales cibernéticos que hackean para robar, extorsionar, destruir o causar daño. Totalmente ilegales.</p>
+                    <p style="margin-top: 15px; color: var(--neon-pink);">✗ Sin permiso | ✗ Intenciones dañinas | ✗ Criminales</p>
+                </div>
+            </div>
+
+            <div class="quote-box">
+                <p class="quote-text">¿Hackear o proteger? El conocimiento es neutral, pero tu decisión define quién eres.</p>
+                <p class="quote-author">— La línea entre curiosidad y crimen es el PERMISO</p>
+            </div>
+        </section>
+
+        <!-- AMENAZAS EN LA UNIVERSIDAD -->
+        <section id="amenazas" class="fade-in">
+            <h2 class="section-title">Amenazas en tu Universidad</h2>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4>🎣 Phishing y Robo de Credenciales</h4>
+                        <p><strong>Escenario:</strong> Recibes un email "urgente" del departamento de TI pidiendo que "verifiques tu cuenta" haciendo click en un enlace.</p>
+                        <p style="margin-top: 10px; color: var(--neon-pink);"><strong>Realidad:</strong> Es un atacante robando tus credenciales para acceder a sistemas universitarios.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4>📄 Filtración de Tesis e Investigaciones</h4>
+                        <p><strong>Escenario:</strong> Años de investigación guardados en la nube sin protección adecuada o en dispositivos compartidos.</p>
+                        <p style="margin-top: 10px; color: var(--neon-pink);"><strong>Realidad:</strong> Competidores o criminales roban propiedad intelectual valiosa.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4>📡 Redes Abiertas: Paraíso para Atacantes</h4>
+                        <p><strong>Escenario:</strong> Conectas tu laptop al WiFi de la universidad y navegas libremente sin protección.</p>
+                        <p style="margin-top: 10px; color: var(--neon-pink);"><strong>Realidad:</strong> Atacantes en la misma red interceptan tus comunicaciones (Man-in-the-Middle).</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4>📱 BYOD: Trae Tu Propio Riesgo</h4>
+                        <p><strong>Escenario:</strong> Usas tu teléfono personal para acceder a sistemas universitarios, sin seguridad empresarial.</p>
+                        <p style="margin-top: 10px; color: var(--neon-pink);"><strong>Realidad:</strong> Si tu dispositivo se compromete, también lo hacen los sistemas académicos.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ERRORES COMUNES -->
+        <section id="errores" class="fade-in">
+            <h2 class="section-title">Errores Comunes (y Cómo Evitarlos)</h2>
+
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon">🔑</div>
+                    <h3>Reutilizar Contraseñas</h3>
+                    <p><strong>El error:</strong> Usar "universidad123" para email, plataforma académica, redes sociales...</p>
+                    <p style="color: var(--neon-pink); margin-top: 10px;">⚠ Si una se compromete, todas caen</p>
+                    <hr style="margin: 15px 0; border-color: rgba(255,255,255,0.1);">
+                    <p><strong>La solución:</strong></p>
+                    <ul>
+                        <li>Usa un gestor de contraseñas (Bitwarden, 1Password)</li>
+                        <li>Contraseñas únicas para cada servicio</li>
+                        <li>Mínimo 12 caracteres con variedad</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">🚪</div>
+                    <h3>No Cerrar Sesiones</h3>
+                    <p><strong>El error:</strong> Dejar tu sesión abierta en la biblioteca, laboratorio o computadora compartida.</p>
+                    <p style="color: var(--neon-pink); margin-top: 10px;">⚠ Acceso total a tu cuenta para cualquiera</p>
+                    <hr style="margin: 15px 0; border-color: rgba(255,255,255,0.1);">
+                    <p><strong>La solución:</strong></p>
+                    <ul>
+                        <li>Siempre cierra sesión en dispositivos públicos</li>
+                        <li>Usa navegación privada/incógnita</li>
+                        <li>Configura bloqueo automático en 5 minutos</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">🧩</div>
+                    <h3>Extensiones Sospechosas</h3>
+                    <p><strong>El error:</strong> Descargar extensiones de navegador sin verificar permisos o fuentes.</p>
+                    <p style="color: var(--neon-pink); margin-top: 10px;">⚠ Pueden robar datos, credenciales, historial</p>
+                    <hr style="margin: 15px 0; border-color: rgba(255,255,255,0.1);">
+                    <p><strong>La solución:</strong></p>
+                    <ul>
+                        <li>Solo instala desde Chrome Web Store oficial</li>
+                        <li>Lee permisos que solicita</li>
+                        <li>Revisa reseñas y cantidad de usuarios</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">🔄</div>
+                    <h3>Ignorar Actualizaciones</h3>
+                    <p><strong>El error:</strong> Posponer actualizaciones de sistema operativo, apps y navegadores indefinidamente.</p>
+                    <p style="color: var(--neon-pink); margin-top: 10px;">⚠ Vulnerabilidades conocidas y explotables</p>
+                    <hr style="margin: 15px 0; border-color: rgba(255,255,255,0.1);">
+                    <p><strong>La solución:</strong></p>
+                    <ul>
+                        <li>Activa actualizaciones automáticas</li>
+                        <li>Instala parches de seguridad ASAP</li>
+                        <li>No uses software sin soporte (ej: Windows 7)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="highlight-box" style="margin-top: 50px;">
+                <h3>🎯 Regla de Oro</h3>
+                <p><strong>Si algo parece demasiado bueno/urgente/extraño para ser verdad... probablemente lo es.</strong></p>
+                <p style="margin-top: 15px;">Pausar 10 segundos antes de hacer click puede salvarte de meses de problemas.</p>
+            </div>
+        </section>
+
+        <!-- INTELIGENCIA ARTIFICIAL -->
+        <section id="ia" class="fade-in">
+            <h2 class="section-title">IA: ¿Aliada o Amenaza?</h2>
+
+            <div class="cards-grid" style="grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));">
+                <div class="card" style="border-top: 4px solid var(--neon-green);">
+                    <div class="card-icon">🛡️</div>
+                    <h3 style="color: var(--neon-green);">IA que Protege</h3>
+                    
+                    <h4 style="color: var(--neon-blue); margin-top: 20px;">Detección de Anomalías</h4>
+                    <p>Sistemas que aprenden el comportamiento "normal" de una red y detectan desviaciones sospechosas en milisegundos.</p>
+                    
+                    <h4 style="color: var(--neon-blue); margin-top: 20px;">Automatización Defensiva</h4>
+                    <p>Respuesta inmediata a incidentes: aislar sistemas comprometidos, bloquear IPs maliciosas, aplicar parches automáticamente.</p>
+                    
+                    <h4 style="color: var(--neon-blue); margin-top: 20px;">Análisis Predictivo</h4>
+                    <p>Procesamiento de millones de indicadores para predecir y prevenir ataques antes de que ocurran.</p>
+                    
+                    <p style="margin-top: 20px; padding: 15px; background: rgba(0, 255, 65, 0.1); border-radius: 10px; color: var(--neon-green);">
+                        <strong>Ejemplo real:</strong> Darktrace detectó ransomware en una universidad británica 3 segundos después de la infección, antes de que cifrara ningún archivo crítico.
+                    </p>
+                </div>
+
+                <div class="card" style="border-top: 4px solid var(--neon-pink);">
+                    <div class="card-icon">⚔️</div>
+                    <h3 style="color: var(--neon-pink);">IA que Ataca</h3>
+                    
+                    <h4 style="color: var(--neon-blue); margin-top: 20px;">Deepfakes Académicos</h4>
+                    <p>Clonación de voz de profesores para aprobar solicitudes falsas, o videos manipulados para difamación.</p>
+                    
+                    <h4 style="color: var(--neon-blue); margin-top: 20px;">Malware Inteligente</h4>
+                    <p>Código malicioso que se adapta para evadir detección, aprende de intentos de eliminación y muta constantemente.</p>
+                    
+                    <h4 style="color: var(--neon-blue); margin-top: 20px;">Phishing Personalizado</h4>
+                    <p>ChatGPT genera correos perfectamente redactados, personalizados según el perfil de la víctima, en cualquier idioma.</p>
+                    
+                    <p style="margin-top: 20px; padding: 15px; background: rgba(255, 0, 110, 0.1); border-radius: 10px; color: var(--neon-pink);">
+                        <strong>Ejemplo real:</strong> Un CEO fue estafado de $243,000 mediante clonación de voz con IA del CEO de la empresa matriz, ordenando una transferencia "urgente".
+                    </p>
+                </div>
+            </div>
+
+            <div class="quote-box" style="margin-top: 50px;">
+                <p class="quote-text">¿Hasta dónde debe intervenir la IA en decisiones académicas?</p>
+                <div style="margin-top: 30px; text-align: left;">
+                    <p><strong>Dilemas éticos actuales:</strong></p>
+                    <ul style="list-style: none; padding-left: 0; margin-top: 15px;">
+                        <li style="padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.1);">🤔 ¿Debería una IA detectar automáticamente si un estudiante usó ChatGPT para su ensayo?</li>
+                        <li style="padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.1);">🤔 ¿Puede una IA decidir bloquear el acceso de un usuario "sospechoso" sin supervisión humana?</li>
+                        <li style="padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.1);">🤔 ¿Es ético usar reconocimiento facial con IA para monitorear asistencia y comportamiento estudiantil?</li>
+                        <li style="padding: 10px 0;">🤔 ¿Dónde está la línea entre seguridad y vigilancia masiva?</li>
+                    </ul>
+                </div>
+                <p class="quote-author" style="margin-top: 20px;">No hay respuestas fáciles. Pero debemos tener la conversación.</p>
+            </div>
+        </section>
+
+        <!-- EL CAMINO DEL HACKER ÉTICO -->
+        <section id="camino" class="fade-in">
+            <h2 class="section-title">El Camino del Hacker Ético</h2>
+
+            <div class="highlight-box">
+                <h3>🚀 Tu Roadmap Profesional</h3>
+                <p>La ciberseguridad ofrece carreras lucrativas, desafiantes y con demanda global. No necesitas ser un genio en matemáticas, solo curiosidad y perseverancia.</p>
+            </div>
+
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon">🎮</div>
+                    <h3>Plataformas de Práctica</h3>
+                    
+                    <div class="resource-item" style="margin-top: 20px;">
+                        <h4>TryHackMe</h4>
+                        <p>Perfecto para principiantes. Paths guiados, gamificado, desde cero hasta avanzado.</p>
+                        <a href="https://tryhackme.com" target="_blank">tryhackme.com →</a>
+                    </div>
+
+                    <div class="resource-item">
+                        <h4>HackTheBox</h4>
+                        <p>Máquinas reales para penetrar. Comunidad activa, retos semanales, ranking global.</p>
+                        <a href="https://www.hackthebox.com" target="_blank">hackthebox.com →</a>
+                    </div>
+
+                    <div class="resource-item">
+                        <h4>OverTheWire</h4>
+                        <p>Wargames para aprender Linux, comandos y fundamentos de hacking. 100% gratis.</p>
+                        <a href="https://overthewire.org" target="_blank">overthewire.org →</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">🎓</div>
+                    <h3>Certificaciones Accesibles</h3>
+                    
+                    <div class="resource-item" style="margin-top: 20px;">
+                        <h4>Google Cybersecurity Certificate</h4>
+                        <p>Coursera | 6 meses | $49/mes (hay becas) | Reconocido globalmente</p>
+                        <span class="badge green">Principiante</span>
+                    </div>
+
+                    <div class="resource-item">
+                        <h4>IBM Cybersecurity Analyst</h4>
+                        <p>Coursera | Gratis auditar | Cubre SOC, threat intelligence, respuesta a incidentes</p>
+                        <span class="badge green">Principiante</span>
+                    </div>
+
+                    <div class="resource-item">
+                        <h4>CompTIA Security+</h4>
+                        <p>Examen $370 USD | Estándar de la industria | Válido 3 años</p>
+                        <span class="badge">Intermedio</span>
+                    </div>
+
+                    <div class="resource-item">
+                        <h4>Certified Ethical Hacker (CEH)</h4>
+                        <p>EC-Council | ~$1,200 USD | Reconocimiento internacional</p>
+                        <span class="badge pink">Avanzado</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">💰</div>
+                    <h3>CTFs, Bug Bounties y Freelancing</h3>
+                    
+                    <h4 style="color: var(--neon-blue); margin-top: 20px;">Capture The Flag (CTFs)</h4>
+                    <p>Competencias de hacking legal. Equipos universitarios compiten resolviendo retos de criptografía, web hacking, forense digital.</p>
+                    <p style="margin-top: 10px;"><strong>Famosos:</strong> DEFCON CTF, Google CTF, PicoCTF</p>
+
+                    <h4 style="color: var(--neon-blue); margin-top: 25px;">Bug Bounty Programs</h4>
+                    <p>Empresas pagan por encontrar vulnerabilidades:</p>
+                    <ul style="margin-top: 10px;">
+                        <li><strong>HackerOne:</strong> Google, Microsoft, GitHub pagan $500-$50,000+ por bug</li>
+                        <li><strong>Bugcrowd:</strong> Tesla, Mastercard, OpenAI</li>
+                        <li><strong>Top hackers ganan:</strong> $100,000 - $1M+ anualmente</li>
+                    </ul>
+
+                    <h4 style="color: var(--neon-blue); margin-top: 25px;">Freelancing</h4>
+                    <p>Penetration testing, consultoría de seguridad, auditorías. Tarifas: $50-200/hora según experiencia.</p>
+                </div>
+            </div>
+
+            <div class="stats-grid" style="margin-top: 50px;">
+                <div class="stat-box">
+                    <div class="stat-number">$30-50K</div>
+                    <div class="stat-label">Salario Junior (entrada)</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">$80-120K</div>
+                    <div class="stat-label">Salario Senior (3-5 años)</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">$150K+</div>
+                    <div class="stat-label">Experto/Especialista</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Trabajo remoto posible</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RECURSOS ADICIONALES -->
+        <section id="recursos" class="fade-in">
+            <h2 class="section-title">Recursos para Empezar HOY</h2>
+
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon">🛠️</div>
+                    <h3>Herramientas Gratuitas</h3>
+                    <ul>
+                        <li><strong>Kali Linux:</strong> Sistema operativo con 600+ herramientas de pentesting</li>
+                        <li><strong>Wireshark:</strong> Analizador de tráfico de red #1 del mundo</li>
+                        <li><strong>Burp Suite:</strong> Framework para web application security testing</li>
+                        <li><strong>Metasploit:</strong> Plataforma para desarrollo y ejecución de exploits</li>
+                        <li><strong>Nmap:</strong> Scanner de redes y puertos más usado</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">📚</div>
+                    <h3>Libros Esenciales</h3>
+                    <ul>
+                        <li><strong>"The Web Application Hacker's Handbook"</strong> - Stuttard & Pinto</li>
+                        <li><strong>"Hacking: The Art of Exploitation"</strong> - Jon Erickson</li>
+                        <li><strong>"Metasploit: The Penetration Tester's Guide"</strong></li>
+                        <li><strong>"Black Hat Python"</strong> - Justin Seitz</li>
+                        <li><strong>"The Pentester BluePrint"</strong> - Phillip Wylie & Kim Crawley</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">🎥</div>
+                    <h3>Canales y Comunidades</h3>
+                    <ul>
+                        <li><strong>YouTube:</strong> NetworkChuck, John Hammond, LiveOverflow, IppSec</li>
+                        <li><strong>Reddit:</strong> r/netsec, r/hacking, r/AskNetsec</li>
+                        <li><strong>Discord:</strong> TryHackMe, HackTheBox, The Cyber Mentor</li>
+                        <li><strong>Twitter:</strong> Sigue a expertos en seguridad</li>
+                        <li><strong>Blogs:</strong> KrebsOnSecurity, Schneier on Security</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="highlight-box" style="margin-top: 50px;">
+                <h3>🎯 Plan de Acción: Primeros 30 Días</h3>
+                <div style="text-align: left; max-width: 700px; margin: 20px auto;">
+                    <p><strong>Semana 1:</strong> Crea cuenta en TryHackMe, completa "Pre Security Path"</p>
+                    <p><strong>Semana 2:</strong> Instala Kali Linux en máquina virtual, familiarízate con comandos</p>
+                    <p><strong>Semana 3:</strong> Completa tu primer CTF en picoCTF</p>
+                    <p><strong>Semana 4:</strong> Comienza Google Cybersecurity Certificate en Coursera</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CIERRE -->
+        <section id="cierre" class="fade-in">
+            <div class="quote-box">
+                <p class="quote-text">El conocimiento es poder... pero la ética le da dirección.</p>
+                <p class="quote-author">— Johan Tapia PhD</p>
+            </div>
+
+            <div class="highlight-box" style="background: linear-gradient(135deg, rgba(0, 243, 255, 0.2), rgba(157, 78, 221, 0.2)); border-color: var(--neon-blue); margin-top: 50px;">
+                <h3 style="color: var(--neon-blue); font-size: 2.5rem;">¿Te atreves a ser parte de los que protegen?</h3>
+                <p style="font-size: 1.3rem; margin: 30px 0;">La universidad necesita defensores digitales. Tu país necesita expertos en ciberseguridad. El mundo necesita hackers éticos.</p>
+                <p style="font-size: 1.5rem; color: var(--neon-pink);"><strong>¿Serás uno de ellos?</strong></p>
+                
+                <div style="margin-top: 40px;">
+                    <a href="#camino" class="cta-button">Comenzar Mi Camino</a>
+                    <a href="#recursos" class="cta-button secondary">Explorar Recursos</a>
+                </div>
+            </div>
+
+            <div class="stats-grid" style="margin-top: 60px;">
+                <div class="stat-box">
+                    <div class="stat-number">∞</div>
+                    <div class="stat-label">Oportunidades de aprendizaje</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">0€</div>
+                    <div class="stat-label">Inversión inicial necesaria</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">HOY</div>
+                    <div class="stat-label">Mejor día para empezar</div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <h3>Ciberseguridad para Mentes Curiosas</h3>
+        <p style="color: var(--neon-purple); font-size: 1.2rem; margin: 10px 0;">Entre el caos, la ética y la inteligencia artificial</p>
+        
+        <div style="margin: 30px 0;">
+            <p style="color: var(--neon-blue); font-size: 1.3rem; font-weight: 600;">Johan Tapia PhD</p>
+            <p>Especialista en Ciberseguridad e Inteligencia Artificial</p>
+        </div>
+
+        <div class="social-links">
+            <a href="#" title="LinkedIn">in</a>
+            <a href="#" title="Twitter">𝕏</a>
+            <a href="#" title="GitHub">GH</a>
+            <a href="#" title="Email">@</a>
+        </div>
+
+        <p style="margin-top: 30px; font-size: 0.9em; color: #666;">
+            © 2025 Johan Tapia PhD | Todos los derechos reservados
+        </p>
+        <p style="margin-top: 10px; font-size: 0.85em; color: #555;">
+            Material educativo diseñado para promover la ciberseguridad ética y responsable
+        </p>
+    </footer>
+
+    <script>
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Parallax effect for hero
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero-content');
+            if (hero && scrolled < window.innerHeight) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+                hero.style.opacity = 1 - (scrolled / window.innerHeight);
+            }
+        });
+    </script>
+</body>
+</html>
